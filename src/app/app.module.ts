@@ -10,11 +10,23 @@ import { ROUTING } from './utils/routes';
 import { HomeComponent } from './components/home/home.component';
 //Importation des scripts
 import "materialize-css/dist/js/materialize.min.js";
+import { UserComponent } from './components/user/user.component';
+import { FriendsComponent } from './components/friends/friends.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { PostsComponent } from './components/posts/posts.component';
+import { TopComponent } from './components/top/top.component';
+import { ArticlesComponent } from './components/articles/articles.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent
+    HomeComponent,
+    UserComponent,
+    FriendsComponent,
+    NavbarComponent,
+    PostsComponent,
+    TopComponent,
+    ArticlesComponent
   ],
   imports: [
     BrowserModule,

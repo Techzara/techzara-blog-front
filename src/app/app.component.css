@@ -1,0 +1,21 @@
+div.row div.col{
+    margin-left: 20px;
+}
+
+#space{
+    border: #f0f0f0 1px solid;
+    margin-left: 0px;
+    margin-right: 0px;
+    border-collapse: collapse;
+}
+
+.edge{
+    background-color: white;
+    border-radius: 3px;
+    padding-bottom: 15px;
+}
+
+div.row{
+    margin: 10px;
+}
+

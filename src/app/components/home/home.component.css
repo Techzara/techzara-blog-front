@@ -1,0 +1,10 @@
+div.content{
+    background-color: white;
+    border-radius: 3px;
+    padding: 30px;
+    margin-bottom: 10px;
+}
+
+p{
+    text-align: justify;
+}

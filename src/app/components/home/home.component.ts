@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { UserService } from 'src/app/services/user/user.service';
+
 
 @Component({
   selector: 'app-home',
@@ -6,9 +8,22 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.css'],
 })
 
-export class HomeComponent implements OnInit {
+export class HomeComponent {
 
-  constructor() {}
+  constructor(private user:UserService) {}
 
-  ngOnInit(): void {}
+  public test(){
+    this.user.connect("api","api")
+    .then((res)=>{
+      console.log("Connecté")
+      console.log(res)
+    })  
+    .catch((err)=>{
+      console.log(err)
+    })
+  }
+
+  public connect(){
+    
+  }
 }

@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { USER_LINK, generateParams } from 'src/app/utils/links';
 
+const CONNEXION_LINK="https://blog.techzara.org/authentication_token";
+
 class User{
   /**
    * @var username: string
@@ -80,5 +82,12 @@ export class UserService {
     var params=generateParams([{key:"id",value:id}])
     return this.http.put(USER_LINK+params,obj)
     .toPromise();
+  }
+
+  public connect(username:string,password:string):Promise<Object>{
+    return this.http.post(CONNEXION_LINK,{
+      username:username,
+      password:password
+    }).toPromise();
   }
 }
