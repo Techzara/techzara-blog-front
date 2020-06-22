@@ -6,23 +6,23 @@ class User{
   /**
    * @var username: string
    */
-  public username;
+  public username:string;
   /**
    * @var password: string
    */
-  public password;
+  public password:string;
   /**
    * @var email: string
    */
-  public email;
+  public email:string;
   /**
-   * @var roles: string
+   * @var roles: Array<string>
    */
-  public roles;
+  public roles:Array<string>;
   /**
    * @var pseudo: string
    */
-  public pseudo;
+  public pseudo:string;
 }
 
 @Injectable({
@@ -40,7 +40,6 @@ export class UserService {
    * @returns Promise<Object>
    */
   public create(obj:User):Promise<Object>{
-    console.log(obj);
     return this.http.post(USER_LINK,obj).toPromise();
   }
 
@@ -73,18 +72,6 @@ export class UserService {
   public remove(id:string):Promise<Object>{
     var params=generateParams([{key:"id",value:id}])
     return this.http.delete(USER_LINK+params)
-    .toPromise();
-  }
-
-  /**
-   * @param obj: User
-   * @param id: string 
-   * Remplace les données sur un utilisateur
-   * @returns Promise<Object>
-   */
-  public replace(obj:User,id:string):Promise<Object>{
-    var params=generateParams([{key:"id",value:id}])
-    return this.http.put(USER_LINK+params,obj)
     .toPromise();
   }
 
