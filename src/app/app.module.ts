@@ -16,6 +16,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { PostsComponent } from './components/posts/posts.component';
 import { TopComponent } from './components/top/top.component';
 import { ArticlesComponent } from './components/articles/articles.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { ArticlesComponent } from './components/articles/articles.component';
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    ROUTING
+    ROUTING,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
