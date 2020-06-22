@@ -8,6 +8,8 @@ import { AppComponent } from './app.component';
 import { from } from 'rxjs';
 import { ROUTING } from './utils/routes';
 import { HomeComponent } from './components/home/home.component';
+//Importation des scripts
+import "materialize-css/dist/js/materialize.min.js";
 
 @NgModule({
   declarations: [

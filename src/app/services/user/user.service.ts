@@ -42,13 +42,19 @@ export class UserService {
   public create(obj:User):Promise<Object>{
     return this.http.post(USER_LINK,obj).toPromise();
   }
-
+  
   /**
+   * @param page:number
+   * le nombre de page à prendre en base de donnée
    * @returns Promise<Object>
-   * Recupere tous les utilisateurs
+   * Recupere plusieurs utilisateurs
    */
-  public getAll():Promise<Object>{
-    return this.http.get(USER_LINK)
+  public getMany(page:number=1):Promise<Object>{
+    var params=generateParams([{
+      key:"page",
+      value:page.toString()
+    }])
+    return this.http.get(USER_LINK+params)
     .toPromise();
   }
 
@@ -65,23 +71,12 @@ export class UserService {
   }
 
   /**
-   * @param id: string
-   * Supprime un utilisateur
-   * @returns Promise<Object> 
-   */
-  public remove(id:string):Promise<Object>{
-    var params=generateParams([{key:"id",value:id}])
-    return this.http.delete(USER_LINK+params)
-    .toPromise();
-  }
-
-  /**
    * @param obj: User
    * @param id: string
    * Met à jour les informations sur l'utilisateur
    * @returns Promise<Object>
    */
-  public update(obj:User,id:string):Promise<Object>{
+  public replace(obj:User,id:string):Promise<Object>{
     var params=generateParams([{key:"id",value:id}])
     return this.http.put(USER_LINK+params,obj)
     .toPromise();

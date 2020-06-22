@@ -5,9 +5,10 @@ class KeyValue{
 
 const GLOBAL="https://blog.techzara.org/api/"
 export const BLOG_LINK=GLOBAL+"blogs";
+export const COMMENT_LINK=GLOBAL+"comments"
+export const REACTION_LINK=GLOBAL+"reactions"
+export const TAG_LINK=GLOBAL+"tags";
 export const USER_LINK=GLOBAL+"users";
-
-
 /**
  * @param array: Array<KeyValue>
  * Génère un parametre d'url du type ?key=value&key=value...
