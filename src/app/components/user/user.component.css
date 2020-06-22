@@ -1,0 +1,14 @@
+#photo{
+    margin-top: 20px;
+    margin-bottom: 10px;
+    border-radius: 50px;
+    position: relative;
+}
+
+.links a{color: #a0a0a0;}
+
+div.control div.btn{border-radius: 20px;}
+
+small{color: #a5a5a5;}
+
+.transparent.btn{border: #2196f3 2px solid;}

@@ -9,6 +9,7 @@ export const COMMENT_LINK=GLOBAL+"comments"
 export const REACTION_LINK=GLOBAL+"reactions"
 export const TAG_LINK=GLOBAL+"tags";
 export const USER_LINK=GLOBAL+"users";
+export const MEDIA_LINK=GLOBAL+"media_objects";
 /**
  * @param array: Array<KeyValue>
  * Génère un parametre d'url du type ?key=value&key=value...
