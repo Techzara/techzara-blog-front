@@ -1,12 +1,32 @@
 /* You can add global styles to this file, and also import other style files */
+
 @import "materialize-css/dist/css/materialize.min.css";
 @import "material-icons/css/material-icons.min.css";
 @import "material-icons/css/material-icons.css";
 @import "font-awesome/css/font-awesome.min.css";
-
 body{
     background-color: #f0f0f0;
 }
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.login-form-field{
+  .mat-form-field-underline{
+    display:none;
+  }
+  input{
+    border-bottom: 2px solid #a299b9 !important;
+  }
+}
+.techzara-logo{
+  font-weight: 900;
+  font-size: 1.3rem;
+  font-family: Oswald,sans-serif;
+  letter-spacing: .2rem;
+  text-shadow: 0 0 black;
+  color:#006698;
+  width:100%;
+  text-align: center;
+}
+
