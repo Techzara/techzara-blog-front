@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { REACTION_LINK, generateParams } from 'src/app/utils/links';
+import { REACTION_LINK, generateParams, HEADERS } from 'src/app/utils/links';
 
 class Reaction{
   public reaction:string;
@@ -23,7 +23,7 @@ export class ReactionService {
    * Retourne une promise
    */
   public create(obj:Reaction):Promise<Object>{
-    return this.http.post(REACTION_LINK,obj)
+    return this.http.post(REACTION_LINK,obj,{headers:HEADERS})
     .toPromise();
   }
 
@@ -38,7 +38,7 @@ export class ReactionService {
       key:"page",
       value:page.toString()
     }]);
-    return this.http.get(REACTION_LINK+params)
+    return this.http.get(REACTION_LINK+params,{headers:HEADERS})
     .toPromise();
   }
 
@@ -53,7 +53,7 @@ export class ReactionService {
       key:"id",
       value:id
     }])
-    return this.http.get(REACTION_LINK+params)
+    return this.http.get(REACTION_LINK+params,{headers:HEADERS})
     .toPromise();
   }
 
@@ -71,7 +71,7 @@ export class ReactionService {
     }])
     return this.http.put(REACTION_LINK+params,{
       reaction:reaction
-      })
+      },{headers:HEADERS})
     .toPromise();
   }
   
@@ -86,7 +86,7 @@ export class ReactionService {
       key:"id",
       value:id
     }])
-    return this.http.delete(REACTION_LINK+params)
+    return this.http.delete(REACTION_LINK+params,{headers:HEADERS})
     .toPromise();
   }
 }

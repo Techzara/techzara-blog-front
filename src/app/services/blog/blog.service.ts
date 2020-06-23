@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { BLOG_LINK, generateParams } from 'src/app/utils/links';
+import { BLOG_LINK, generateParams, HEADERS } from 'src/app/utils/links';
 
 class Blog{
   public title:string;
@@ -23,7 +23,7 @@ export class BlogService {
    * Retourne une promise
    */
    public create(obj:Blog):Promise<Object>{
-    return this.http.post(BLOG_LINK,obj)
+    return this.http.post(BLOG_LINK,obj,{headers:HEADERS})
     .toPromise();
   }
 
@@ -38,7 +38,7 @@ export class BlogService {
       key:"page",
       value:page.toString()
     }]);
-    return this.http.get(BLOG_LINK+params)
+    return this.http.get(BLOG_LINK+params,{headers:HEADERS})
     .toPromise();
   }
 
@@ -53,7 +53,7 @@ export class BlogService {
       key:"id",
       value:id
     }])
-    return this.http.get(BLOG_LINK+params)
+    return this.http.get(BLOG_LINK+params,{headers:HEADERS})
     .toPromise();
   }
 
@@ -69,7 +69,7 @@ export class BlogService {
       key:"id",
       value:id
     }])
-    return this.http.put(BLOG_LINK+params,obj)
+    return this.http.put(BLOG_LINK+params,obj,{headers:HEADERS})
     .toPromise();
   }
   
@@ -84,7 +84,7 @@ export class BlogService {
       key:"id",
       value:id
     }])
-    return this.http.delete(BLOG_LINK+params)
+    return this.http.delete(BLOG_LINK+params,{headers:HEADERS})
     .toPromise();
   }
   

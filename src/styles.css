@@ -4,6 +4,6 @@
 @import "material-icons/css/material-icons.css";
 @import "font-awesome/css/font-awesome.min.css";
 
-body{
-    background-color: #f0f0f0;
-}
+body{background-color: #f0f0f0;}
+
+body::-webkit-scrollbar{display: none;}

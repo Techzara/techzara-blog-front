@@ -16,6 +16,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { PostsComponent } from './components/posts/posts.component';
 import { TopComponent } from './components/top/top.component';
 import { ArticlesComponent } from './components/articles/articles.component';
+import { TestComponent } from './test/test.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { ArticlesComponent } from './components/articles/articles.component';
     NavbarComponent,
     PostsComponent,
     TopComponent,
-    ArticlesComponent
+    ArticlesComponent,
+    TestComponent
   ],
   imports: [
     BrowserModule,

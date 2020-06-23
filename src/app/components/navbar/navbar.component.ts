@@ -20,4 +20,9 @@ export class NavbarComponent implements OnInit {
     })
   }
 
+  public logout(){
+    localStorage.removeItem("SESSION_TOKEN");
+    location.reload();
+  }
+
 }

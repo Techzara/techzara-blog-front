@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { USER_LINK, generateParams } from 'src/app/utils/links';
+import { USER_LINK, generateParams, HEADERS } from 'src/app/utils/links';
 
-const CONNEXION_LINK="https://blog.techzara.org/authentication_token";
+const CONNEXION_LINK="https://blog.techzara.org​/authentication_token";
 
 class User{
   /**
@@ -56,7 +56,7 @@ export class UserService {
       key:"page",
       value:page.toString()
     }])
-    return this.http.get(USER_LINK+params)
+    return this.http.get(USER_LINK+params,{headers:HEADERS})
     .toPromise();
   }
 
@@ -68,7 +68,7 @@ export class UserService {
    */
   public getOne(id:string):Promise<Object>{
     var params=generateParams([{key:"id",value:id}])
-    return this.http.get(USER_LINK+params)
+    return this.http.get(USER_LINK+params,{headers:HEADERS})
     .toPromise();
   }
 
@@ -80,7 +80,7 @@ export class UserService {
    */
   public replace(obj:User,id:string):Promise<Object>{
     var params=generateParams([{key:"id",value:id}])
-    return this.http.put(USER_LINK+params,obj)
+    return this.http.put(USER_LINK+params,obj,{headers:HEADERS})
     .toPromise();
   }
 

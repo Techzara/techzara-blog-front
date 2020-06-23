@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { MEDIA_LINK, generateParams } from 'src/app/utils/links';
+import { MEDIA_LINK, generateParams, HEADERS } from 'src/app/utils/links';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +12,7 @@ export class MediaobjectService {
   public create(file:File):Promise<Object>{
     var data=new FormData();
     data.append("file",file);
-    return this.http.post(MEDIA_LINK,data)
+    return this.http.post(MEDIA_LINK,data,{headers:HEADERS})
     .toPromise();
 
   }
@@ -22,7 +22,7 @@ export class MediaobjectService {
       key:"page",
       value:page.toString()
     }])
-    return this.http.get(MEDIA_LINK+params)
+    return this.http.get(MEDIA_LINK+params,{headers:HEADERS})
     .toPromise();
   }
 
@@ -31,7 +31,7 @@ export class MediaobjectService {
       key:"id",
       value:id
     }])
-    return this.http.get(MEDIA_LINK+params)
+    return this.http.get(MEDIA_LINK+params,{headers:HEADERS})
     .toPromise();
   }
   
