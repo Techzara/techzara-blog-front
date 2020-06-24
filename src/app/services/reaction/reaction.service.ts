@@ -49,11 +49,7 @@ export class ReactionService {
    * Retourne une promise
    */
   public getOne(id:string):Promise<Object>{
-    var params=generateParams([{
-      key:"id",
-      value:id
-    }])
-    return this.http.get(REACTION_LINK+params,{headers:HEADERS})
+    return this.http.get(REACTION_LINK+"/"+id,{headers:HEADERS})
     .toPromise();
   }
 
@@ -65,11 +61,7 @@ export class ReactionService {
    * Retourne une promise
    */
   public replace(reaction:string,id:string){
-    var params=generateParams([{
-      key:"id",
-      value:id
-    }])
-    return this.http.put(REACTION_LINK+params,{
+    return this.http.put(REACTION_LINK+"/"+id,{
       reaction:reaction
       },{headers:HEADERS})
     .toPromise();
@@ -82,11 +74,7 @@ export class ReactionService {
    * Retourne une promise
    */
   public remove(id:string){
-    var params=generateParams([{
-      key:"id",
-      value:id
-    }])
-    return this.http.delete(REACTION_LINK+params,{headers:HEADERS})
+    return this.http.delete(REACTION_LINK+"/"+id,{headers:HEADERS})
     .toPromise();
   }
 }

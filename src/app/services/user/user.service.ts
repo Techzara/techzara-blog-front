@@ -18,10 +18,6 @@ class User{
    */
   public email:string;
   /**
-   * @var roles: Array<string>
-   */
-  public roles:Array<string>;
-  /**
    * @var pseudo: string
    */
   public pseudo:string;
@@ -79,8 +75,7 @@ export class UserService {
    * @returns Promise<Object>
    */
   public replace(obj:User,id:string):Promise<Object>{
-    var params=generateParams([{key:"id",value:id}])
-    return this.http.put(USER_LINK+params,obj,{headers:HEADERS})
+    return this.http.put(USER_LINK+"/"+id,obj,{headers:HEADERS})
     .toPromise();
   }
 

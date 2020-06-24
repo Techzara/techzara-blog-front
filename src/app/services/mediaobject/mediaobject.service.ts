@@ -27,11 +27,7 @@ export class MediaobjectService {
   }
 
   public getOne(id:string):Promise<Object>{
-    var params=generateParams([{
-      key:"id",
-      value:id
-    }])
-    return this.http.get(MEDIA_LINK+params,{headers:HEADERS})
+    return this.http.get(MEDIA_LINK+"/"+id,{headers:HEADERS})
     .toPromise();
   }
   

@@ -49,11 +49,7 @@ export class BlogService {
    * Retourne une promise
    */
   public getOne(id:string):Promise<Object>{
-    var params=generateParams([{
-      key:"id",
-      value:id
-    }])
-    return this.http.get(BLOG_LINK+params,{headers:HEADERS})
+    return this.http.get(BLOG_LINK+"/"+id,{headers:HEADERS})
     .toPromise();
   }
 
@@ -65,11 +61,7 @@ export class BlogService {
    * Retourne une promise
    */
   public replace(obj:Blog,id:string){
-    var params=generateParams([{
-      key:"id",
-      value:id
-    }])
-    return this.http.put(BLOG_LINK+params,obj,{headers:HEADERS})
+    return this.http.put(BLOG_LINK+"/"+id,obj,{headers:HEADERS})
     .toPromise();
   }
   
@@ -80,11 +72,7 @@ export class BlogService {
    * Retourne une promise
    */
   public remove(id:string){
-    var params=generateParams([{
-      key:"id",
-      value:id
-    }])
-    return this.http.delete(BLOG_LINK+params,{headers:HEADERS})
+    return this.http.delete(BLOG_LINK+"/"+id,{headers:HEADERS})
     .toPromise();
   }
   

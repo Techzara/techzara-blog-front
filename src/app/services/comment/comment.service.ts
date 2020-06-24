@@ -49,11 +49,7 @@ export class CommentService {
    * Retourne une promise
    */
   public getOne(id:string):Promise<Object>{
-    var params=generateParams([{
-      key:"id",
-      value:id
-    }])
-    return this.http.get(COMMENT_LINK+params,{headers:HEADERS})
+    return this.http.get(COMMENT_LINK+"/"+id,{headers:HEADERS})
     .toPromise();
   }
 
@@ -65,11 +61,7 @@ export class CommentService {
    * Retourne une promise
    */
   public replace(comment:string,id:string){
-    var params=generateParams([{
-      key:"id",
-      value:id
-    }])
-    return this.http.put(COMMENT_LINK+params,{
+    return this.http.put(COMMENT_LINK+"/"+id,{
       comment:comment
     },{headers:HEADERS})
     .toPromise();
@@ -82,11 +74,7 @@ export class CommentService {
    * Retourne une promise
    */
   public remove(id:string){
-    var params=generateParams([{
-      key:"id",
-      value:id
-    }])
-    return this.http.delete(COMMENT_LINK+params,{headers:HEADERS})
+    return this.http.delete(COMMENT_LINK+"/"+id,{headers:HEADERS})
     .toPromise();
   }
 }

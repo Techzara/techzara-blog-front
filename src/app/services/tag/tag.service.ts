@@ -42,11 +42,7 @@ export class TagService {
    * Retourne une promise
    */
   public getOne(id:string):Promise<Object>{
-    var params=generateParams([{
-      key:"id",
-      value:id
-    }])
-    return this.http.get(TAG_LINK+params,{headers:HEADERS})
+    return this.http.get(TAG_LINK+'/'+id,{headers:HEADERS})
     .toPromise();
   }
   
@@ -57,11 +53,7 @@ export class TagService {
    * Retourne une promise
    */
   public remove(id:string){
-    var params=generateParams([{
-      key:"id",
-      value:id
-    }])
-    return this.http.delete(TAG_LINK+params,{headers:HEADERS})
+    return this.http.delete(TAG_LINK+'/'+id,{headers:HEADERS})
     .toPromise();
   }
 }
