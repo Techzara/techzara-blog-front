@@ -1,24 +1,14 @@
-$color:#a1a1a1;
-$button_color:#1976d2;
-$link_color:black;
-$background_color:white;
-
+@import "../../../../../theme/light.theme.scss";
 
 footer{
     padding-bottom: 20px;
 
-    small{
-        color: $color;
-    }
+    small{color: $color;}
     
     span#external-link{
         float: right;
-        i{
-            margin-right: 20px;
-        }
+        i{margin-right: 20px;}
     }
 
-    a{
-        color: $link_color;
-    }
+    a{color: $link_color;}
 }

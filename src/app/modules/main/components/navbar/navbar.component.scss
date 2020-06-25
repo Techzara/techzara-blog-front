@@ -1,25 +1,23 @@
-$background_color:white;
-$text_color:black;
+@import "../../../../../theme/light.theme.scss";
 
 nav{
     box-shadow: none;
     background-color: $background_color;
     color: $text_color;
-    small{
-        color: $text_color;
-    }
-    a{
-        color: $text_color;
-    }
-    h5.left{
-        margin-left: 20px;
-    }
+
+    small{color: $text_color;}
+
+    a{color: $text_color;}
+
+    h5.left{margin-left: 20px;}
+
     ul.right{
         margin-right: 20px;
         p{
             margin: 0px;
             color: $text_color;
-            margin-left: 5px;
+            margin-left: 9px;
         }
+        li{span{color: $text_color;}}
     }
 }
