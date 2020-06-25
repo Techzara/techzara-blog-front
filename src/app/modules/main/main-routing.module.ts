@@ -7,6 +7,10 @@ const MAIN_ROUTE: Routes = [
   {
     path: '',
     component:HomeComponent
+  },
+  {
+    path:"**",
+    redirectTo:""
   }
 ];
 

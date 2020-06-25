@@ -34,7 +34,7 @@ export class UserService implements CanActivate {
               private _router:Router) { }
 
   canActivate(route:ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
-    if(localStorage.getItem("SESSION_TOKEN")==null)this._router.navigate(["/"])
+    if(localStorage.getItem("SESSION_TOKEN")==null)location.assign("/")
     return true;
   }
 
