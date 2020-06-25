@@ -18,6 +18,16 @@ nav{
             color: $text_color;
             margin-left: 9px;
         }
-        li{span{color: $text_color;}}
+        li{
+            span{color: $text_color;}
+        }
+
+        input{
+            border-bottom: 1px #e0e0e0 solid;
+        }
+
+        input:focus{
+            border-bottom: 1px $button_color solid;
+        }
     }
 }
