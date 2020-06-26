@@ -1,6 +1,11 @@
-@import "../../../../../theme/light.theme.scss";
+@import "../../../../../theme/current.theme.scss";
+
+*{
+    color: $text_color;
+}
+
 div.container{
-    margin-top: 100px;
+    margin-top: 5em;
     
     p{color: $link_color}
 }

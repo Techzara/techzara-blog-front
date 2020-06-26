@@ -3,6 +3,7 @@
 @import "material-icons/css/material-icons.min.css";
 @import "material-icons/css/material-icons.css";
 @import "font-awesome/css/font-awesome.min.css";
+@import "./theme/current.theme.scss";
 
 .btn{
     box-shadow: none;
@@ -13,5 +14,5 @@
 }
 
 body{
-    background-color: white;
+    background-color: $body_background;
 }
