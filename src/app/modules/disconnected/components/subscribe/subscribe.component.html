@@ -1,0 +1,75 @@
+<div align="center" class="container">
+    <h4>TECHZARA</h4>
+    <h5>Inscription</h5>
+    <br>
+    <form class="container" [formGroup]="form_subscribe" (submit)="subscribe()">
+        <strong class="red-text">{{error}}</strong>
+        <br><br>
+        <div class="input-field col s2">
+            <input id="username" formControlName="username" type="text" (focus)='clear()'>
+            <label for="username">Nom d'utilisateur</label>
+            <span class="helper-text" data-error="wrong" data-success="right"></span>
+        </div>
+
+        <div class="input-field col s2">
+            <input id="pseudo" formControlName="pseudo" type="text" (focus)='clear()'>
+            <label for="pseudo">Pseudo</label>
+            <span class="helper-text" data-error="wrong" data-success="right"></span>
+        </div>
+
+        <div class="input-field col s2">
+            <input id="email" formControlName="email" type="email" (focus)='clear()'>
+            <label for="email">Email</label>
+            <span class="helper-text" data-error="wrong" data-success="right"></span>
+        </div>
+        
+        <div class="input-field col s2">
+            <input id="password" formControlName="password" type="password" (focus)='clear()'>
+            <label for="password">Mot de passe</label>
+            <span class="helper-text" data-error="wrong" data-success="right"></span>
+        </div>
+
+        <div class="input-field col s2">
+            <input id="confirmation" formControlName="confirmation" type="password" (focus)='clear()'>
+            <label for="confirmation">Confirmation du Mot de Passe</label>
+            <span class="helper-text" data-error="wrong" data-success="right"></span>
+        </div>
+
+        <div class="input-field col s2">
+            <p>
+                <label>
+                  <input type="checkbox" formControlName="agree" />
+                  <span>Accepetez vous nos conditions d'utilisation?</span>
+                </label>
+              </p>
+        </div>
+
+        <div *ngIf="!loading">
+            <button class="btn blue darken-2 waves-effect waves-light" 
+                [disabled]='!form_subscribe.valid || !form_subscribe.get("agree").value'>
+                Inscription
+            </button>
+        </div>
+
+        <div class="preloader-wrapper small active" *ngIf="loading">
+            <div class="spinner-layer spinner-green-only">
+              <div class="circle-clipper left">
+                <div class="circle"></div>
+              </div><div class="gap-patch">
+                <div class="circle"></div>
+              </div><div class="circle-clipper right">
+                <div class="circle"></div>
+              </div>
+            </div>
+        </div>
+
+        <div>
+            <p>
+                Vous avez déja un compte? 
+                <a href="/">Connectez Vous</a>
+            </p>
+        </div>
+        
+    </form>
+
+</div>

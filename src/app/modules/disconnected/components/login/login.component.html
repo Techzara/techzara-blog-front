@@ -1,0 +1,45 @@
+<div align="center" class="container">
+    <h4>TECHZARA</h4>
+    <h5>Login</h5>
+    <br>
+    <form class="container" [formGroup]="form_login" (submit)="login()">
+        <strong class="red-text">{{error}}</strong>
+        <br><br>
+        <div class="input-field col s2">
+            <input id="username" formControlName="login" type="text" (focus)='clear()'>
+            <label for="username">Nom d'utilisateur</label>
+            <span class="helper-text" data-error="wrong" data-success="right"></span>
+        </div>
+        
+        <div class="input-field col s2">
+            <input id="password" formControlName="password" type="password" (focus)='clear()'>
+            <label for="password">Mot de passe</label>
+            <span class="helper-text" data-error="wrong" data-success="right"></span>
+        </div>
+
+        <div *ngIf="!loading">
+            <button class="btn blue darken-2 waves-effect waves-light" [disabled]="!form_login.valid">Se Connecter</button>
+        </div>
+
+        <div class="preloader-wrapper small active" *ngIf="loading">
+            <div class="spinner-layer spinner-green-only">
+              <div class="circle-clipper left">
+                <div class="circle"></div>
+              </div><div class="gap-patch">
+                <div class="circle"></div>
+              </div><div class="circle-clipper right">
+                <div class="circle"></div>
+              </div>
+            </div>
+        </div>
+
+        <div>
+            <p>
+                Vous n'avez pas encore de compte? 
+                <a href="/subscribe">Inscrivez vous</a>
+            </p>
+        </div>
+
+    </form>
+
+</div>

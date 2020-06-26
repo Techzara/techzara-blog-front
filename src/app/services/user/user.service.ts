@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { USER_LINK, generateParams, HEADERS } from 'src/app/utils/links';
+import { CanActivate, RouterStateSnapshot, ActivatedRouteSnapshot, Router, CanDeactivate } from '@angular/router';
 
 const CONNEXION_LINK="https://blog.techzara.org​/authentication_token";
 
@@ -18,10 +19,6 @@ class User{
    */
   public email:string;
   /**
-   * @var roles: Array<string>
-   */
-  public roles:Array<string>;
-  /**
    * @var pseudo: string
    */
   public pseudo:string;
@@ -31,9 +28,15 @@ class User{
   providedIn: 'root'
 })
 
-export class UserService {
+export class UserService implements CanActivate {
 
-  constructor(private http:HttpClient) { }
+  constructor(private http:HttpClient,
+              private _router:Router) { }
+
+  canActivate(route:ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
+    if(localStorage.getItem("SESSION_TOKEN")==null)location.assign("/")
+    return true;
+  }
 
   /**
    * @param obj: User
@@ -67,7 +70,20 @@ export class UserService {
    * @returns Promise<Object>
    */
   public getOne(id:string):Promise<Object>{
-    var params=generateParams([{key:"id",value:id}])
+    return this.http.get(USER_LINK+"/"+id,{headers:HEADERS})
+    .toPromise();
+  }
+
+  /**
+   * @param name:string
+   * Retourne un utilisateur à partir de son username
+   * @returns Promise<Object>
+   */
+  public getOneByName(name:string):Promise<Object>{
+    var params=generateParams([{
+      key:"username",
+      value:name
+    }])
     return this.http.get(USER_LINK+params,{headers:HEADERS})
     .toPromise();
   }
@@ -79,8 +95,7 @@ export class UserService {
    * @returns Promise<Object>
    */
   public replace(obj:User,id:string):Promise<Object>{
-    var params=generateParams([{key:"id",value:id}])
-    return this.http.put(USER_LINK+params,obj,{headers:HEADERS})
+    return this.http.put(USER_LINK+"/"+id,obj,{headers:HEADERS})
     .toPromise();
   }
 

@@ -1,0 +1,16 @@
+@import "../../../../../theme/light.theme.scss";
+div.container{
+    margin-top: 100px;
+    
+    p{color: $link_color}
+}
+
+p{text-align: justify;}
+
+.btn{
+    border-radius: 3px;
+    color: white;
+    i{color: white;}
+}
+
+

@@ -1,0 +1,14 @@
+@import "../../../../../theme/light.theme.scss";
+
+footer{
+    padding-bottom: 20px;
+
+    small{color: $color;}
+    
+    span#external-link{
+        float: right;
+        i{margin-right: 20px;}
+    }
+
+    a{color: $link_color;}
+}

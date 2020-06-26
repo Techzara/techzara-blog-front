@@ -1,20 +1,20 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import {LoginComponent} from "./components/login/login.component";
-import {InscriptionComponent} from "./components/inscription/inscription.component";
+import { AppComponent } from './app.component';
+import { LoginComponent } from './modules/disconnected/components/login/login.component';
+import { BlogService } from './services/blog/blog.service';
+import { UserService } from './services/user/user.service';
 
 const routes: Routes = [
   {
-    path: '',
-    component: LoginComponent
-  },
-  { // quand le path est home , charger en asynchrone le module Homemodule , module de la page d'accueil
-    path: 'home',
-    loadChildren: () => import("./modules/home/home.module").then(m => m.HomeModule)
+    path:'',
+    loadChildren:"./modules/disconnected/disconnected.module#DisconnectedModule",
+    canActivate:[BlogService]
   },
   {
-    path: 'inscription',
-    component: InscriptionComponent
+    path:"home",
+    loadChildren:"./modules/main/main.module#MainModule",
+    canActivate:[UserService]
   }
 ];
 

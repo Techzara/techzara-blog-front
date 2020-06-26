@@ -1,0 +1,16 @@
+@import "../../../../../theme/light.theme.scss";
+@import "../home/home.component.scss";
+
+#control{
+    float: right;
+    .btn{
+        margin-left: 5px;
+    }
+}
+
+#post{
+    display:none;
+    background-color: #fbfbfb;
+    padding: 20px;
+    border-radius: 10px;
+}

@@ -1,0 +1,50 @@
+@import "../../../../../theme/light.theme.scss";
+
+.navigation{
+    a{
+        float: right;
+        margin-right: 20px;
+        text-decoration: underline;
+        color:$button_color;
+    }
+}
+
+div.card{
+    background-color: $background_color;
+    div.card-image{
+        img{
+            width: 100%;
+            height: 100%;
+        }
+    }
+    .avatar{
+        border: none;
+        margin-top: 0px;
+        background-color: $background_color;
+        color: $link_color;
+        .secondary-content{
+            font-style: italic;
+            color: $color;
+        }
+        p{
+            color: $color;
+            font-style:italic;
+        }
+    }
+}
+
+.tabs{
+    float: left;
+    width: 320px;
+    a{
+        color: $button_color;
+        cursor: pointer;
+    }
+}
+
+strong.right{
+    margin-top: 12px;
+    font-size: 15px;
+}
+
+
