@@ -1,8 +1,8 @@
-@import "../../../../../theme/light.theme.scss";
+@import "../../../../../theme/current.theme.scss";
 
 nav{
     box-shadow: none;
-    background-color: $background_color;
+    background-color: $body_background;
     color: $text_color;
 
     small{color: $text_color;}
@@ -24,6 +24,7 @@ nav{
 
         input{
             border-bottom: 1px #e0e0e0 solid;
+            color: $text_color;
         }
 
         input:focus{

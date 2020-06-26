@@ -1,5 +1,8 @@
-@import "../../../../../theme/light.theme.scss";
 @import "../home/home.component.scss";
+
+*{
+    color: $text_color;
+}
 
 #control{
     float: right;
@@ -10,7 +13,27 @@
 
 #post{
     display:none;
-    background-color: #fbfbfb;
+    background-color: $background_color;
     padding: 20px;
     border-radius: 10px;
+}
+
+#user-info{
+    display:none;
+    background-color: $background_color;
+    padding: 20px;
+    border-radius: 10px;
+    .clickable{
+        cursor: pointer;
+        color:$link_color;
+        :hover{opacity: 0.8;}
+        :active{opacity: 0.5;}
+    }
+
+}
+
+div.controls{
+    a{
+        margin: 5px;
+    }
 }

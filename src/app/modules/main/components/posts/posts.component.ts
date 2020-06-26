@@ -15,6 +15,8 @@ export class PostsComponent implements OnInit {
     files:new FormControl()
   })
 
+  public update_mode=false;
+
   constructor() { }
 
   ngOnInit(): void {
@@ -25,6 +27,19 @@ export class PostsComponent implements OnInit {
     var files:Array<File>=input_files.files;
     $("#decoration").fadeOut(200,()=>{
       $('#post').fadeIn(200);
+    })
+  }
+
+  public user_show(){
+    $("#decoration").fadeOut(200,()=>{
+      $('#user-info').fadeIn(200);
+    })
+  }
+
+  public user_hide(){
+    this.update_mode=false;
+    $("#user-info").fadeOut(200,()=>{
+      $('#decoration').fadeIn(200);
     })
   }
 
