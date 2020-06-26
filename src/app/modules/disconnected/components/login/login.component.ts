@@ -32,7 +32,7 @@ export class LoginComponent implements OnInit {
       .then((res:any)=>{
         this.clear();
         localStorage.setItem('SESSION_TOKEN',res.token);
-        location.reload();
+        location.assign("/home");
       })
       .catch((err)=>{
         if(err.status==0)this.error="Erreur de connexion,vérifier que vous etes connecté à internet."
