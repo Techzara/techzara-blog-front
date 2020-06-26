@@ -15,6 +15,8 @@ export class PostsComponent implements OnInit {
     files:new FormControl()
   })
 
+  public data_load=false;
+
   public update_mode=false;
 
   constructor() { }
@@ -31,9 +33,13 @@ export class PostsComponent implements OnInit {
   }
 
   public user_show(){
-    $("#decoration").fadeOut(200,()=>{
-      $('#user-info').fadeIn(200);
-    })
+    this.data_load=true;
+    setTimeout(()=>{
+      this.data_load=false;
+      $("#decoration").fadeOut(200,()=>{
+        $('#user-info').fadeIn(200);
+      })
+    },3000)
   }
 
   public user_hide(){

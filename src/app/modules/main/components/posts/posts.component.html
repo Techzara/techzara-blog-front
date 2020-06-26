@@ -20,8 +20,11 @@
                 <a href="/home#top" class="btn blue darken-2 waves-effect waves-light" (click)='show()'>
                     <i class="fa fa-plus"></i> Nouveau Blog
                 </a>
-                <a href="/home#top" class="btn blue darken-2 waves-effect waves-light" (click)='user_show()'>
+                <a *ngIf="!data_load" href="/home#top" class="btn blue darken-2 waves-effect waves-light" (click)='user_show()'>
                     <i class="fa fa-user"></i>
+                </a>
+                <a *ngIf="data_load" class="loader">
+                    <app-loader></app-loader>
                 </a>
             </div>
         </div>

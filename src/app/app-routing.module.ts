@@ -15,6 +15,10 @@ const routes: Routes = [
     path:"home",
     loadChildren:"./modules/main/main.module#MainModule",
     canActivate:[UserService]
+  },
+  {
+    path:"**",
+    redirectTo:"/"
   }
 ];
 

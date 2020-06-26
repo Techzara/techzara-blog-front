@@ -40,6 +40,8 @@ export class LoginComponent implements OnInit {
       }).finally(()=>{
         this.loading=false;
       })
+      localStorage.setItem("SESSION_TOKEN","ok");
+      location.assign("/")
   }
 
   public clear(){
