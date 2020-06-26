@@ -15,5 +15,4 @@ export class NavbarComponent implements OnInit {
     localStorage.clear();
     location.assign('/');
   }
-
 }

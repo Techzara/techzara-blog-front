@@ -78,32 +78,32 @@
         <h4>
            <a class="clickable" (click)="user_hide()"><i class="fa fa-angle-left"></i></a>  
            Gestion du Profil 
-            <a class="clickable" (click)="update_mode=!update_mode"><i class="fa fa-edit"></i></a>
+            <a class="clickable" (click)="update_toggle()"><i class="fa fa-edit"></i></a>
         </h4>
         <div class="divider"></div>
         <br><br>
-        <form>
+        <form [formGroup]="form_user">
             <div class="row">
                 <div class="input-field col s6">
-                    <input id="username" type="text" [disabled]="!update_mode">
+                    <input formControlName="username" placeholder="" id="username" type="text">
                     <label class="active" for="username">Nom d'utilisateur</label>
                 </div>
             </div>
             <div class="row">
                 <div class="input-field col s6">
-                    <input id="pseudo" type="text" [disabled]="!update_mode">
+                    <input formControlName="pseudo" placeholder="" id="pseudo" type="text">
                     <label class="active" for="pseudo">Pseudo</label>
                 </div>
             </div>
             <div class="row">
                 <div class="input-field col s6">
-                    <input id="email" type="email" [disabled]="!update_mode">
+                    <input id="email" formControlName="email" placeholder="" type="email">
                     <label class="active" for="email">Email</label>
                 </div>
             </div>
             <div class="row">
                 <div class="col">
-                    <button class="btn blue darken-2 waves-light waves-effect" [disabled]="!update_mode">
+                    <button class="btn blue darken-2 waves-light waves-effect" [disabled]="!update_mode || !form_user.valid">
                         Mettre à Jour
                     </button>
                 </div>
