@@ -20,7 +20,11 @@ export class BlogService implements CanActivate {
 
 
   canActivate(route: ActivatedRouteSnapshot, state:RouterStateSnapshot): boolean{
-    if(localStorage.getItem("SESSION_TOKEN")!=null)location.assign('/home');
+    if(localStorage.getItem("SESSION_TOKEN")!=null){
+      location.assign('/home');
+      return false;
+    }
+    console.log("coucou");
     return true;
   }
 

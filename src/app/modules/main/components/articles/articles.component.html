@@ -2,84 +2,178 @@
   <div class="col s12">
       <ul class="tabs tabs-fixed-width transparent">
           <li class="tab">
-              <a href="#25">Feed</a>
+            <a href="/home#all">Tout</a>
           </li>
-          <li class="tab"><a>Last</a></li>
-          <li class="tab"><a>Week</a></li>
-          <li class="tab"><a>Top</a></li>
+          <li class="tab">
+            <a href="/home#recent">A la Une</a>
+          </li>
+          <li class="tab">
+            <a href="/home#my-blogs">Mes Blogs</a>
+          </li>
       </ul>
       <strong class="right">
-          <a>Categorie <i class="fa fa-angle-down"></i></a>
+          <a>Tags <i class="fa fa-angle-down"></i></a>
       </strong>
   </div>
 </div>
 
-<div class="row">
-    <div class="col s12">
+<div class="row element" id="all">
+
+  <div *ngIf="data.length==0" class="col s12" align="center">
+    <div class="card loading-card">
+      <div *ngIf="!load_data">
+        <h5>message</h5>
+      </div>
+
+      <div *ngIf="load_data" class="preloader-wrapper big active">
+        <div class="spinner-layer spinner-blue-only">
+          <div class="circle-clipper left">
+            <div class="circle"></div>
+          </div>
+          <div class="gap-patch">
+              <div class="circle"></div>
+          </div>
+          <div class="circle-clipper right">
+            <div class="circle"></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div *ngIf="data.length>0">
+    <div class="col s12" *ngFor="let item of data">
       <div class="card">
+  
         <div class="card-image">
-        <!---------------------Image--------------------------->
+        <!----------------------------------------------------------->
         </div>
+  
         <div class="card-content">
-          <span class="card-title"><strong>New Hook Release</strong></span>
-          <p>I am a very simple card. I am good at containing small bits of information.
-          I am convenient because I require little markup to use effectively.</p>
+          <span class="card-title"><strong>{{item.title}}</strong></span>
+          <p>{{item.description}}</p>
         </div>
+  
         <ul class="collection avatar">
-            <li class="collection-item avatar">
-              <i class="fa fa-user circle blue darken-2"></i>
-              <span class="title">pseudo</span>
-              <p>email</p>
-              <a class="secondary-content">5min</a>
-            </li>
-          </ul>
+          <li class="collection-item avatar">
+            <i class="fa fa-user circle blue darken-2"></i>
+            <span class="title">{{item.pseudo}}</span>
+            <p>{{item.email}}</p>
+            <a class="secondary-content">{{item.date}}</a>
+          </li>
+        </ul>
+  
       </div>
     </div>
+  </div>
 
-    <div class="col s12">
-        <div class="card">
-            <div class="card-image">
-                <img class="activator on-card" src="../../../../../assets/img3.jpg">
-            </div>
-            <div class="card-content">
-                <span class="card-title"><strong>New Hook Release</strong></span>
-                <p>I am a very simple card. I am good at containing small bits of information.
-                I am convenient because I require little markup to use effectively.</p>
-            </div>
-            <ul class="collection avatar">
-                <li class="collection-item avatar">
-                    <i class="fa fa-user circle blue darken-2"></i>
-                    <span class="title">pseudo</span>
-                    <p>email</p>
-                    <a class="secondary-content">5min</a>
-                </li>
-            </ul>
-        </div>
-    </div>
+</div>
 
-    <div class="col s12">
-        <div class="card">
-          <div class="card-image">
-              
+
+
+<div class="row element" id="recent">
+
+  <div *ngIf="data.length==0" class="col s12" align="center">
+    <div class="card loading-card">
+      <div *ngIf="!load_data">
+        <h5>message</h5>
+      </div>
+
+      <div *ngIf="load_data" class="preloader-wrapper big active">
+        <div class="spinner-layer spinner-blue-only">
+          <div class="circle-clipper left">
+            <div class="circle"></div>
           </div>
-          <div class="card-content">
-            <span class="card-title"><strong>New Hook Release</strong></span>
-            <p>I am a very simple card. I am good at containing small bits of information.
-            I am convenient because I require little markup to use effectively.</p>
+          <div class="gap-patch">
+              <div class="circle"></div>
           </div>
-          <ul class="collection avatar">
-              <li class="collection-item avatar">
-                <i class="fa fa-user circle blue darken-2"></i>
-                <span class="title">pseudo</span>
-                <p>email</p>
-                <a class="secondary-content">5min</a>
-              </li>
-            </ul>
+          <div class="circle-clipper right">
+            <div class="circle"></div>
+          </div>
         </div>
-    </div>
+      </div>
 
-    <div class="col s12" class="navigation">
-        <a>Next <i class="fa fa-angle-right"></i></a>
     </div>
+  </div>
+
+  <div *ngIf="data.length>0">
+    <div class="col s12" *ngFor="let item of data">
+      <div class="card">
+  
+        <div class="card-image">
+        <!----------------------------------------------------------->
+        </div>
+  
+        <div class="card-content">
+          <span class="card-title"><strong>{{item.title}}</strong></span>
+          <p>{{item.description}}</p>
+        </div>
+  
+        <ul class="collection avatar">
+          <li class="collection-item avatar">
+            <i class="fa fa-user circle blue darken-2"></i>
+            <span class="title">{{item.pseudo}}</span>
+            <p>{{item.email}}</p>
+            <a class="secondary-content">{{item.date}}</a>
+          </li>
+        </ul>
+  
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="row element" id="my-blogs">
+
+  <div *ngIf="data.length==0" class="col s12" align="center">
+    <div class="card loading-card">
+      <div *ngIf="!load_data">
+        <h5>message</h5>
+      </div>
+
+      <div *ngIf="load_data" class="preloader-wrapper big active">
+        <div class="spinner-layer spinner-blue-only">
+          <div class="circle-clipper left">
+            <div class="circle"></div>
+          </div>
+          <div class="gap-patch">
+              <div class="circle"></div>
+          </div>
+          <div class="circle-clipper right">
+            <div class="circle"></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div *ngIf="data.length>0">
+    <div class="col s12" *ngFor="let item of data">
+      <div class="card">
+  
+        <div class="card-image">
+        <!----------------------------------------------------------->
+        </div>
+  
+        <div class="card-content">
+          <span class="card-title"><strong>{{item.title}}</strong></span>
+          <p>{{item.description}}</p>
+        </div>
+  
+        <ul class="collection avatar">
+          <li class="collection-item avatar">
+            <i class="fa fa-user circle blue darken-2"></i>
+            <span class="title">{{item.pseudo}}</span>
+            <p>{{item.email}}</p>
+            <a class="secondary-content">{{item.date}}</a>
+          </li>
+        </ul>
+  
+      </div>
+    </div>
+  </div>
 
 </div>

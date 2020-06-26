@@ -11,6 +11,7 @@ import "materialize-css/dist/js/materialize.min.js";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DisconnectedModule } from './modules/disconnected/disconnected.module';
 import { MainModule } from './modules/main/main.module';
+import { LoaderComponent } from './utils/loader/loader.component';
 
 @NgModule({
   declarations: [

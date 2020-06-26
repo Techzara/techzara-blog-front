@@ -13,7 +13,7 @@ export class NavbarComponent implements OnInit {
 
   public logout(){
     localStorage.clear();
-    location.reload();
+    location.assign('/');
   }
 
 }

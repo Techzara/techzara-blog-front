@@ -8,10 +8,17 @@ import { MainRoutingModule } from './main-routing.module';
 import { PostsComponent } from './components/posts/posts.component';
 import { ArticlesComponent } from './components/articles/articles.component';
 import { FormsModule, ReactiveFormsModule, FormGroup } from '@angular/forms';
+import { LoaderComponent } from 'src/app/utils/loader/loader.component';
 
 
 @NgModule({
-  declarations: [HomeComponent, NavbarComponent, FooterComponent, PostsComponent, ArticlesComponent],
+  declarations: [
+    HomeComponent,
+    NavbarComponent, 
+    FooterComponent, 
+    PostsComponent, 
+    ArticlesComponent,
+    LoaderComponent],
   imports: [
     CommonModule,
     FormsModule,
@@ -24,7 +31,8 @@ import { FormsModule, ReactiveFormsModule, FormGroup } from '@angular/forms';
     RouterModule,
     MainRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    LoaderComponent
   ],
 })
 export class MainModule { }
