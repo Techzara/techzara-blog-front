@@ -11,27 +11,37 @@ export class ArticlesComponent implements OnInit {
 
   public load_data=false;
 
-  public all=[{
-    title:"Mon titre 1",
-    description:"Ma description",
-    pseudo:"Test1234",
-    email:"example@test.com",
-    date:"12/25/2020"
-  },
-  {
-    title:"Mon titre 2",
-    description:"Ma description",
-    pseudo:"Test1234",
-    email:"example@test.com",
-    date:"12/25/2020"
-  },
-  {
-    title:"Mon titre 3",
-    description:"Ma description",
-    pseudo:"Test1234",
-    email:"example@test.com",
-    date:"12/25/2020"
-  }]
+  public all=[
+        {
+          title:"Mon titre 1",
+          description:"Ma description",
+          pseudo:"Test1234",
+          email:"example@test.com",
+          date:"12/25/2020"
+        },
+        {
+          title:"Mon titre 2",
+          description:"Ma description",
+          pseudo:"Test1234",
+          email:"example@test.com",
+          date:"12/25/2020"
+        },
+        {
+          title:"Mon titre 3",
+          description:"Ma description",
+          pseudo:"Test1234",
+          email:"example@test.com",
+          date:"12/25/2020"
+        },
+        {
+          title:"Mon titre 3",
+          description:"Ma description",
+          pseudo:"Test1234",
+          email:"example@test.com",
+          date:"12/25/2020",
+          url:"../../../../../assets/img4.jpg"
+        }
+]
 
   public recent=[
     {
@@ -62,14 +72,15 @@ export class ArticlesComponent implements OnInit {
 
   public data:Array<Object>=this.all;
 
-  constructor() {
-    
-  }
+  public materialboxed;
+
+  constructor() {}
 
   ngOnInit(): void {
     var tabs=M.Tabs.init(document.querySelector(".tabs"),{
       onShow:this.tabs_load
     })
+    
     $("li.indicator").css({'background-color':'#1976d2'});
     $(".tabs .tab a").css({'background-color':"#ffffff00"});
     tabs.select('all');
@@ -104,6 +115,10 @@ export class ArticlesComponent implements OnInit {
         break;
       }
     }
+  }
+
+  public open=()=>{
+    this.materialboxed=M.Materialbox.init(document.querySelectorAll('.materialboxed'));
   }
 
 }

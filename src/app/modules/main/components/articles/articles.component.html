@@ -47,7 +47,9 @@
       <div class="card">
   
         <div class="card-image">
-        <!----------------------------------------------------------->
+          <!----------------------------------------------------------->
+          <img *ngIf="item.url" class="materialboxed img" src="{{item.url}}" height="" (load)='open()'>
+        
         </div>
   
         <div class="card-content">
@@ -63,14 +65,22 @@
             <a class="secondary-content">{{item.date}}</a>
           </li>
         </ul>
+
+        <div class="card-action">
+          <a href="" class="blue-text">
+            <i class="comment fa fa-comment"></i> Commentaires 0 
+          </a>
+
+          <a class="blue-text">
+            <i class="heart fa fa-heart"></i> Reactions 0
+          </a>
+        </div>
   
       </div>
     </div>
   </div>
 
 </div>
-
-
 
 <div class="row element" id="recent">
 
@@ -98,11 +108,12 @@
   </div>
 
   <div *ngIf="data.length>0">
-    <div class="col s12" *ngFor="let item of data">
+    <div class="col s12" *ngFor="let item of data; let index=i">
       <div class="card">
   
         <div class="card-image">
-        <!----------------------------------------------------------->
+          <!----------------------------------------------------------->
+          <img *ngIf="item.url" class="materialboxed img" src="{{item.url}}" height="" (load)='open()'>
         </div>
   
         <div class="card-content">
@@ -118,6 +129,16 @@
             <a class="secondary-content">{{item.date}}</a>
           </li>
         </ul>
+
+        <div class="card-action">
+          <a href="" class="blue-text">
+            <i class="comment fa fa-comment"></i> Commentaires 0 
+          </a>
+
+          <a class="blue-text">
+            <i class="heart fa fa-heart"></i> Reactions 0
+          </a>
+        </div>
   
       </div>
     </div>
@@ -155,7 +176,8 @@
       <div class="card">
   
         <div class="card-image">
-        <!----------------------------------------------------------->
+          <!----------------------------------------------------------->
+          <img *ngIf="item.url" class="materialboxed img" src="{{item.url}}" height="" (load)='open()'>
         </div>
   
         <div class="card-content">
@@ -171,6 +193,16 @@
             <a class="secondary-content">{{item.date}}</a>
           </li>
         </ul>
+
+        <div class="card-action">
+          <a href="" class="blue-text">
+            <i class="comment fa fa-comment"></i> Commentaires 0 
+          </a>
+
+          <a class="blue-text">
+            <i class="heart fa fa-heart"></i> Reactions 0
+          </a>
+        </div>
   
       </div>
     </div>
