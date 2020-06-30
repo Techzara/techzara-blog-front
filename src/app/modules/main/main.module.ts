@@ -10,7 +10,6 @@ import { ArticlesComponent } from './components/articles/articles.component';
 import { FormsModule, ReactiveFormsModule, FormGroup } from '@angular/forms';
 import { LoaderComponent } from 'src/app/utils/loader/loader.component';
 
-
 @NgModule({
   declarations: [
     HomeComponent,
@@ -18,7 +17,8 @@ import { LoaderComponent } from 'src/app/utils/loader/loader.component';
     FooterComponent, 
     PostsComponent, 
     ArticlesComponent,
-    LoaderComponent],
+    LoaderComponent
+  ],
   imports: [
     CommonModule,
     FormsModule,

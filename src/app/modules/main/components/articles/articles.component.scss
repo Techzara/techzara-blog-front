@@ -52,4 +52,25 @@ strong.right{
     color: $color;
 }
 
+div.card-image{
+    max-height: 350px;
+    overflow: hidden;
+}
+
+@media screen and(min-width:1300px){
+    div.element{
+        padding-left: 100px;
+        padding-right: 100px;
+    }
+}
+
+div.card-action a:hover{
+    opacity: 0.5;
+    cursor: pointer;
+}
+
+div.card-action{
+
+    i.heart{color: #f52020;}
+}
 
