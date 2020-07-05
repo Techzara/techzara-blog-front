@@ -2,11 +2,11 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { REACTION_LINK, generateParams, HEADERS } from 'src/app/utils/links';
 
-class Reaction{
-  public reaction:string;
-  public user:string;
-  public blog:string=null;
-  public comment:string=null;
+interface Reaction{
+  reaction:string;
+  user:string;
+  blog:string;
+  comment:string;
 }
 
 @Injectable({

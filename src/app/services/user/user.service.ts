@@ -5,23 +5,23 @@ import { CanActivate, RouterStateSnapshot, ActivatedRouteSnapshot, Router, CanDe
 
 const CONNEXION_LINK="https://blog.techzara.org​/authentication_token";
 
-class User{
+interface User{
   /**
    * @var username: string
    */
-  public username:string;
+  username:string;
   /**
    * @var password: string
    */
-  public password:string;
+  password:string;
   /**
    * @var email: string
    */
-  public email:string;
+  email:string;
   /**
    * @var pseudo: string
    */
-  public pseudo:string;
+  pseudo:string;
 }
 
 @Injectable({
