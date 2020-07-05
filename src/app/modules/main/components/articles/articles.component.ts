@@ -10,39 +10,9 @@ import { BlogService } from 'src/app/services/blog/blog.service';
 })
 export class ArticlesComponent implements OnInit {
 
-  public load_data=false;
+  public load_data=true;
 
-  public all=[
-        {
-          title:"Mon titre 1",
-          description:"Ma description",
-          pseudo:"Test1234",
-          email:"example@test.com",
-          date:"12/25/2020"
-        },
-        {
-          title:"Mon titre 2",
-          description:"Ma description",
-          pseudo:"Test1234",
-          email:"example@test.com",
-          date:"12/25/2020"
-        },
-        {
-          title:"Mon titre 3",
-          description:"Ma description",
-          pseudo:"Test1234",
-          email:"example@test.com",
-          date:"12/25/2020"
-        },
-        {
-          title:"Mon titre 3",
-          description:"Ma description",
-          pseudo:"Test1234",
-          email:"example@test.com",
-          date:"12/25/2020",
-          url:"../../../../../assets/img4.jpg"
-        }
-]
+  public all=[]
 
   public recent=[
     {
@@ -84,8 +54,11 @@ export class ArticlesComponent implements OnInit {
 
     this._blog.getMany().then((res)=>{
       console.log(res)
+      this.all=res['hydra:member']
+      this.data=this.all
     }).catch((err)=>{
-      console.log(err)
+    }).finally(()=>{
+      this.load_data=false
     })
     
     $("li.indicator").css({'background-color':'#1976d2'});

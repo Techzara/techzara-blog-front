@@ -8,6 +8,7 @@ interface Blog{
   description:string;
   images:Array<string>;
   tags:Array<string>;
+  user:string;
 }
 
 @Injectable({

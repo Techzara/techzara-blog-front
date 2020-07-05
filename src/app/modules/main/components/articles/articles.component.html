@@ -48,7 +48,7 @@
   
         <div class="card-image">
           <!----------------------------------------------------------->
-          <img *ngIf="item.url" class="materialboxed img" src="{{item.url}}" height="" (load)='open()'>
+          <!--<img *ngIf="item.url" class="materialboxed img" src="{{item.url}}" height="" (load)='open()'>-->
         
         </div>
   
@@ -60,19 +60,19 @@
         <ul class="collection avatar">
           <li class="collection-item avatar">
             <i class="fa fa-user circle blue darken-2"></i>
-            <span class="title">{{item.pseudo}}</span>
-            <p>{{item.email}}</p>
-            <a class="secondary-content">{{item.date}}</a>
+            <span class="title"></span>
+            <p></p>
+            <a class="secondary-content"></a>
           </li>
         </ul>
 
         <div class="card-action">
           <a href="" class="blue-text">
-            <i class="comment fa fa-comment"></i> Commentaires 0 
+            <i class="comment fa fa-comment"></i> Commentaires {{item.comments.length}}
           </a>
 
           <a class="blue-text">
-            <i class="heart fa fa-heart"></i> Reactions 0
+            <i class="heart fa fa-heart"></i> Reactions {{item.reactions.length}}
           </a>
         </div>
   

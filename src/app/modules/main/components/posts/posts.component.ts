@@ -5,6 +5,7 @@ import {JwtHelperService} from "@auth0/angular-jwt";
 import { from } from 'rxjs';
 import { UserService } from 'src/app/services/user/user.service';
 import { BlogService } from 'src/app/services/blog/blog.service';
+import { MediaobjectService } from 'src/app/services/mediaobject/mediaobject.service';
 
 @Component({
   selector: 'app-posts',
@@ -34,7 +35,7 @@ export class PostsComponent implements OnInit {
 
   private id_user;
 
-  constructor(private _user:UserService,private _blog:BlogService) { }
+  constructor(private _user:UserService,private _blog:BlogService,private _media:MediaobjectService) { }
 
   ngOnInit(): void {
   }
@@ -55,8 +56,6 @@ export class PostsComponent implements OnInit {
     .then((res)=>{
       var user=res['hydra:member'][0]
       this.id_user=user.uuid
-      console.log(user)
-      console.log(this.id_user)
       this.form_user.setValue({
         username:user.username,
         email:user.email,
@@ -98,16 +97,23 @@ export class PostsComponent implements OnInit {
     var description=this.form_post.get("description").value;
     var input_files:any=document.getElementById('files');
     var files:Array<File>=input_files.files;
-    this._blog.create({
-      title:title,
-      description:description,
-      images:[],
-      tags:[]
-    }).then((res:any)=>{
-      console.log(res)
+    this.send_media(files).then((images)=>{
+      var token:any=this.helper.decodeToken(localStorage.getItem("SESSION_TOKEN"));
+      this._blog.create({
+        title:title,
+        description:description,
+        images:images,
+        tags:[],
+        user:null
+      }).then((res:any)=>{
+        console.log(res)
+      }).catch((err)=>{
+        console.log(err)
+      })
     }).catch((err)=>{
       console.log(err)
     })
+    
   }
 
   public update_toggle(){
@@ -132,6 +138,19 @@ export class PostsComponent implements OnInit {
     }).catch((err)=>{
       
     })
+  }
+
+  public async send_media(files:Array<File>){
+    var result=[]
+    for(let i=0;i<files.length;i++){
+      try{
+        var res:any=await this._media.create(files[i]);
+        result.push(res.contentUrl)
+      }catch(e){
+        throw(e)
+      }
+    }
+    return result
   }
 
 }

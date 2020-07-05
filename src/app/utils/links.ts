@@ -14,6 +14,7 @@ export const HEADERS={
     'Content-Type':'application/json',
     'Authorization':'Bearer '+localStorage.getItem('SESSION_TOKEN')
 };
+
 /**
  * @param array: Array<KeyValue>
  * Génère un parametre d'url du type ?key=value&key=value...
