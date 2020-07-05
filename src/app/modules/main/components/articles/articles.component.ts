@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import * as M from "materialize-css/dist/js/materialize.min";
 import * as $ from "jquery/dist/jquery.min.js";
+import { BlogService } from 'src/app/services/blog/blog.service';
 
 @Component({
   selector: 'app-articles',
@@ -74,11 +75,17 @@ export class ArticlesComponent implements OnInit {
 
   public materialboxed;
 
-  constructor() {}
+  constructor(private _blog:BlogService) {}
 
   ngOnInit(): void {
     var tabs=M.Tabs.init(document.querySelector(".tabs"),{
       onShow:this.tabs_load
+    })
+
+    this._blog.getMany().then((res)=>{
+      console.log(res)
+    }).catch((err)=>{
+      console.log(err)
     })
     
     $("li.indicator").css({'background-color':'#1976d2'});

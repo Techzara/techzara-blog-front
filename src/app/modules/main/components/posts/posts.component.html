@@ -101,9 +101,20 @@
                     <label class="active" for="email">Email</label>
                 </div>
             </div>
+
+            <div class="divider"></div>
+
+            <small class="red-text">Entrez votre mot de passe pour confirmer la mise à jour du profil</small>
+
+            <div class="row">
+                <div class="input-field col s6">
+                    <input id="password" formControlName="password" placeholder="" type="password">
+                    <label for="password">Mot de Passe</label>
+                </div>
+            </div>
             <div class="row">
                 <div class="col">
-                    <button class="btn blue darken-2 waves-light waves-effect" [disabled]="!update_mode || !form_user.valid">
+                    <button (click)='update()' class="btn blue darken-2 waves-light waves-effect" [disabled]="!update_mode || !form_user.valid">
                         Mettre à Jour
                     </button>
                 </div>
