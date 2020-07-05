@@ -3,11 +3,11 @@ import { HttpClient } from '@angular/common/http';
 import { BLOG_LINK, generateParams, HEADERS } from 'src/app/utils/links';
 import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router } from '@angular/router';
 
-class Blog{
-  public title:string;
-  public description:string;
-  public images:Array<string>;
-  public tags:Array<string>;
+interface Blog{
+  title:string;
+  description:string;
+  images:Array<string>;
+  tags:Array<string>;
 }
 
 @Injectable({

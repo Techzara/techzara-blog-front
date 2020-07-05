@@ -2,11 +2,10 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { COMMENT_LINK,generateParams, HEADERS } from 'src/app/utils/links';
 
-class Comment{
-  public comment:string;
-  public blog:string;
-  public user:string;
-
+interface Comment{
+  comment:string;
+  blog:string;
+  user:string;
 }
 
 @Injectable({

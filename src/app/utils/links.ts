@@ -12,7 +12,7 @@ export const USER_LINK=GLOBAL+"users";
 export const MEDIA_LINK=GLOBAL+"media_objects";
 export const HEADERS={
     'Content-Type':'application/json',
-    'Authorization':localStorage.getItem('SESSION_TOKEN')
+    'Authorization':'Bearer '+localStorage.getItem('SESSION_TOKEN')
 };
 /**
  * @param array: Array<KeyValue>

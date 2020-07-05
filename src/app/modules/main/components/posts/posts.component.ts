@@ -4,6 +4,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import {JwtHelperService} from "@auth0/angular-jwt";
 import { from } from 'rxjs';
 import { UserService } from 'src/app/services/user/user.service';
+import { BlogService } from 'src/app/services/blog/blog.service';
 
 @Component({
   selector: 'app-posts',
@@ -21,8 +22,8 @@ export class PostsComponent implements OnInit {
   public form_user=new FormGroup({
     username:new FormControl({value:'',disabled:true},Validators.required),
     pseudo:new FormControl({value:'',disabled:true},Validators.required),
-    email:new FormControl({value:'',disabled:true},Validators.required)
-
+    email:new FormControl({value:'',disabled:true},Validators.required),
+    password:new FormControl({value:'',disabled:true},Validators.required)
   })
 
   private helper=new JwtHelperService();
@@ -31,7 +32,9 @@ export class PostsComponent implements OnInit {
 
   public update_mode=false;
 
-  constructor(private _user:UserService) { }
+  private id_user;
+
+  constructor(private _user:UserService,private _blog:BlogService) { }
 
   ngOnInit(): void {
   }
@@ -51,10 +54,14 @@ export class PostsComponent implements OnInit {
     this._user.getOneByName(token.username)
     .then((res)=>{
       var user=res['hydra:member'][0]
+      this.id_user=user.uuid
+      console.log(user)
+      console.log(this.id_user)
       this.form_user.setValue({
         username:user.username,
         email:user.email,
-        pseudo:user.pseudo
+        pseudo:user.pseudo,
+        password:""
       });
       $("#decoration").fadeOut(200,()=>{
         $('#user-info').fadeIn(200);
@@ -91,12 +98,40 @@ export class PostsComponent implements OnInit {
     var description=this.form_post.get("description").value;
     var input_files:any=document.getElementById('files');
     var files:Array<File>=input_files.files;
+    this._blog.create({
+      title:title,
+      description:description,
+      images:[],
+      tags:[]
+    }).then((res:any)=>{
+      console.log(res)
+    }).catch((err)=>{
+      console.log(err)
+    })
   }
 
   public update_toggle(){
     this.update_mode=!this.update_mode;
     this.form_user.disable();
     if(this.update_mode)this.form_user.enable();
+  }
+
+  public update(){
+    var username=this.form_user.get("username").value;
+    var pseudo=this.form_user.get("pseudo").value;
+    var email=this.form_user.get("email").value;
+    var password=this.form_user.get("password").value;
+
+    this._user.replace({
+      username:username,
+      pseudo:pseudo,
+      email:email,
+      password:password
+    },this.id_user).then((res:any)=>{
+      
+    }).catch((err)=>{
+      
+    })
   }
 
 }
