@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { BLOG_LINK, generateParams, HEADERS } from 'src/app/utils/links';
+import { BLOG_LINK, generateParams, HEADERS, TOKEN_KEY } from 'src/app/utils/links';
 import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router } from '@angular/router';
 
 interface Blog{
@@ -21,11 +21,10 @@ export class BlogService implements CanActivate {
 
 
   canActivate(route: ActivatedRouteSnapshot, state:RouterStateSnapshot): boolean{
-    if(localStorage.getItem("SESSION_TOKEN")!=null){
+    if(localStorage.getItem(TOKEN_KEY)!=null){
       location.assign('/home');
       return false;
     }
-    console.log("coucou");
     return true;
   }
 

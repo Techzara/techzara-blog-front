@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { USER_LINK, generateParams, HEADERS } from 'src/app/utils/links';
-import { CanActivate, RouterStateSnapshot, ActivatedRouteSnapshot, Router, CanDeactivate } from '@angular/router';
+import { CanActivate, RouterStateSnapshot, ActivatedRouteSnapshot, Router } from '@angular/router';
 
-const CONNEXION_LINK="https://blog.techzara.org​/authentication_token";
+const CONNEXION_LINK="https://techzara.org​/authentication_token";
 
 interface User{
   /**
@@ -34,7 +34,7 @@ export class UserService implements CanActivate {
               private _router:Router) { }
 
   canActivate(route:ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
-    if(localStorage.getItem("SESSION_TOKEN")==null){
+    if(localStorage.getItem(TOKEN_KEY)==null){
         location.assign("/")
         return false;
     }
