@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { MEDIA_LINK, generateParams, HEADERS } from 'src/app/utils/links';
+import { MEDIA_LINK, generateParams, HEADERS, TOKEN_KEY } from 'src/app/utils/links';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +13,7 @@ export class MediaobjectService {
     var formdata:FormData=new FormData();
     formdata.append("file",file);
     return this.http.post(MEDIA_LINK,formdata,{headers:{
-      'Authorization':'Bearer '+localStorage.getItem('SESSION_TOKEN')
+      'Authorization':'Bearer '+localStorage.getItem(TOKEN_KEY)
     }})
     .toPromise();
   }

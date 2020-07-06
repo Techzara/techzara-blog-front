@@ -65,6 +65,11 @@ export class BlogService implements CanActivate {
     .toPromise();
   }
 
+  public getComments(id:string):Promise<Object>{
+    return this.http.get(BLOG_LINK+"/"+id+"/comments",{headers:HEADERS})
+    .toPromise();
+  }
+
   /**
    * @param obj :Blog
    * @param id :string

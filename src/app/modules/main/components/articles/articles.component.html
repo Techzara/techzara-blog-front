@@ -5,9 +5,6 @@
             <a href="/home#all">Tout</a>
           </li>
           <li class="tab">
-            <a href="/home#recent">A la Une</a>
-          </li>
-          <li class="tab">
             <a href="/home#my-blogs">Mes Blogs</a>
           </li>
       </ul>
@@ -30,7 +27,7 @@
 
   <div *ngIf="data.length>0">
     <div class="col s12" *ngFor="let item of data">
-      <div class="card" (click)="navigate(item['@id'])">
+      <div class="card" (click)="navigate(item.uuid)">
   
         <div class="card-image">
           <!----------------------------------------------------------->
@@ -64,62 +61,6 @@
 
           <a class="blue-text">
             <i class="heart fa fa-heart"></i> Reactions {{item.reactions.length}}
-          </a>
-        </div>
-  
-      </div>
-    </div>
-  </div>
-
-</div>
-
-<div class="row element" id="recent">
-
-  <div class="col s12" align="center">
-    <div class="card loading-card">
-      <div *ngIf="!load_data">
-        <h5>{{message}}</h5>
-      </div>
-      <app-loading *ngIf="load_data"></app-loading>
-    </div>
-  </div>
-
-  <div *ngIf="data.length>0">
-    <div class="col s12">
-      <div class="card">
-  
-        <div class="card-image">
-          <!----------------------------------------------------------->
-          <!--<img *ngIf="item.url" class="materialboxed img" src="{{item.url}}" height="" (load)='open()'>-->
-        
-        </div>
-
-        <div class="card-content">
-
-          <div class="avatar">
-            <div class="circle blue col">
-              <i class="fa fa-user white-text fa-2x"></i>
-            </div>
-            <div class="col">
-              <strong>pseudo</strong>
-            </div>
-          </div>
-          <br>
-          <div class="divider"></div>
-          <br>
-          <span class="card-title"><strong>Titre</strong></span>
-          <p>
-            description
-          </p>
-          <small class="date">date</small>
-        </div>
-        <div class="card-action">
-          <a href="" class="blue-text">
-            <i class="comment fa fa-comment"></i> Commentaires 0
-          </a>
-
-          <a class="blue-text">
-            <i class="heart fa fa-heart"></i> Reactions 0
           </a>
         </div>
   

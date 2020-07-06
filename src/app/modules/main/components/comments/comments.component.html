@@ -1,4 +1,4 @@
-<div class="comment row">
+<div class="comment row" *ngFor="let item of comments">
     <div class="col">
         <div class="circle blue" align="center">
             <i class="fa fa-user white-text fa-3x"></i>
@@ -21,9 +21,19 @@
     </div>
 </div>
 
+<div class="card" *ngIf="comments.length==0 && loading==false">
+    <div class="card-content" align="center">
+        <h5>Section Vide</h5>
+    </div>
+</div>
+
 <div class="card" *ngIf="loading">
     <div class="card-content" align="center">
         <app-loading></app-loading>
+        <br>
+        <h5>
+            Chargement des Commentaires
+        </h5>
     </div>
 </div>
 
@@ -36,11 +46,13 @@
         <form class="col s12">
           <div class="row">
             <div class="input-field col s12">
-              <textarea id="comment-area" class="materialize-textarea"></textarea>
+              <textarea name="comment" id="comment-area" [(ngModel)]="text_comment" class="materialize-textarea"></textarea>
               <label for="textarea1">Textarea</label>
             </div>
           </div>
-          <div class="btn blue waves-effect wevs-light"><i class="fa fa-reply"></i> Envoyer</div>
+          <div (click)="post_comment(text_comment)" class="btn blue waves-effect wevs-light">
+              <i class="fa fa-reply"></i> Envoyer
+            </div>
         </form>
       </div>
 </div>
