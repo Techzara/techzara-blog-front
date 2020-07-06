@@ -29,6 +29,7 @@ export class PostsComponent implements OnInit {
   public data_load=false;
   public update_mode=false;
   private id_user;
+  public post_error="";
 
   public loading=false;
   
@@ -86,6 +87,7 @@ export class PostsComponent implements OnInit {
   }
   
   public hide(){
+    this.clear_error()
     this.form_post.get("description").reset();
     this.form_post.get("title").reset();
     this.form_post.get("files").reset();
@@ -97,11 +99,13 @@ export class PostsComponent implements OnInit {
 
   // Post un blog.
   public post() {
+    this.clear_error()
     this.loading=true;
     var title=this.form_post.get("title").value;
     var description=this.form_post.get("description").value;
     var input_files:any=document.getElementById('files');
     var files:Array<File>=input_files.files;
+    
     this.send_media(files).then((images)=>{
       this._blog.create({
         title:title,
@@ -113,13 +117,22 @@ export class PostsComponent implements OnInit {
         // doStuff()
         location.reload()
       }).catch((err)=>{
-        // doStuff()
+        input_files=undefined
+        this.form_post.setValue({
+          title:'',
+          description:'',
+          files:""
+        })
         console.log(err)
+        this.post_error="Une Erreur s'est produite lors de l'envoi du post."
       }).finally(()=>{this.loading=false})
     }).catch((err)=>{
       this.loading=false;
     })
-    
+  }
+
+  public clear_error(){
+    this.post_error=''
   }
 
   public update_toggle(){
