@@ -13,6 +13,7 @@ import { CommentsComponent } from './components/comments/comments.component';
 import { ArticleComponent } from './components/article/article.component';
 import { BlogComponent } from './components/blog/blog.component';
 import { SearchComponent } from './components/search/search.component';
+import { LoadingComponent } from './components/loading/loading.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { SearchComponent } from './components/search/search.component';
     CommentsComponent,
     ArticleComponent,
     BlogComponent,
-    SearchComponent
+    SearchComponent,
+    LoadingComponent
   ],
   imports: [
     CommonModule,

@@ -6,7 +6,7 @@ import { from } from 'rxjs';
 import { UserService } from 'src/app/services/user/user.service';
 import { BlogService } from 'src/app/services/blog/blog.service';
 import { MediaobjectService } from 'src/app/services/mediaobject/mediaobject.service';
-import { USERNAME_KEY } from 'src/app/utils/links';
+import { USERNAME_KEY, TOKEN_KEY } from 'src/app/utils/links';
 
 @Component({
   selector: 'app-posts',
@@ -29,6 +29,8 @@ export class PostsComponent implements OnInit {
   public data_load=false;
   public update_mode=false;
   private id_user;
+
+  public loading=false;
   
   /*---------------------------------------------------------------------*/
 
@@ -82,7 +84,7 @@ export class PostsComponent implements OnInit {
       $('#decoration').fadeIn(200);
     })
   }
-
+  
   public hide(){
     this.form_post.get("description").reset();
     this.form_post.get("title").reset();
@@ -95,6 +97,7 @@ export class PostsComponent implements OnInit {
 
   // Post un blog.
   public post() {
+    this.loading=true;
     var title=this.form_post.get("title").value;
     var description=this.form_post.get("description").value;
     var input_files:any=document.getElementById('files');
@@ -107,12 +110,14 @@ export class PostsComponent implements OnInit {
         tags:[],
         user:localStorage.getItem(USERNAME_KEY)
       }).then((res:any)=>{
-        console.log(res)
+        // doStuff()
+        location.reload()
       }).catch((err)=>{
+        // doStuff()
         console.log(err)
-      })
+      }).finally(()=>{this.loading=false})
     }).catch((err)=>{
-      console.log(err)
+      this.loading=false;
     })
     
   }
@@ -137,6 +142,7 @@ export class PostsComponent implements OnInit {
       password:password
     },this.id_user).then((res:any)=>{
       localStorage.setItem(USERNAME_KEY,username)
+      this.user_hide();
     }).catch((err)=>{
       
     })

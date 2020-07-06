@@ -31,7 +31,12 @@
     </div>
 
     <div class="row z-depth-1" id="post">
-        <form class="col s12" [formGroup]="form_post">
+        <div align="center" *ngIf="loading">
+            <h5 class="center align">Envoi du poste en cours</h5>
+            <app-loading></app-loading>
+        </div>
+
+        <form *ngIf="!loading" class="col s12" [formGroup]="form_post">
             <h4>Publier un Article</h4>
             <div class="divider"></div>
             <br>

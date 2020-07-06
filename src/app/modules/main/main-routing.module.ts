@@ -5,6 +5,8 @@ import { Routes, Router, RouterModule } from '@angular/router';
 import { ArticlesComponent } from './components/articles/articles.component';
 import { ArticleComponent } from './components/article/article.component';
 import { SearchComponent } from './components/search/search.component';
+import { ArticlePageService } from 'src/app/services/articles-page/article-page.service';
+import { SearchPageService } from 'src/app/services/search-page/search-page.service';
 const MAIN_ROUTE: Routes = [
   {
    
@@ -13,11 +15,13 @@ const MAIN_ROUTE: Routes = [
   },
   {
     path:"article",
-    component:ArticleComponent
+    component:ArticleComponent,
+    canActivate:[ArticlePageService]
   },
   {
     path:"search",
-    component:SearchComponent
+    component:SearchComponent,
+    canActivate:[SearchPageService]
   }
 ];
 

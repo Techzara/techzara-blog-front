@@ -13,6 +13,7 @@ export class ArticlesComponent implements OnInit {
   public load_data=true;
   public data:Array<Object>=[];
   public materialboxed;
+  public message="Erreur de Chargemet";
 
   /*---------------------------------------------------------------------*/
 
@@ -27,7 +28,10 @@ export class ArticlesComponent implements OnInit {
 
     this._blog.getMany().then((res)=>{
       this.data=res['hydra:member']
+      if(this.data.length==0)this.message="Section Vide"
+      console.log(this.data)
     }).catch((err)=>{
+      this.message="Erreur de Chargmenent"
     }).finally(()=>{
       this.load_data=false
     })
@@ -49,7 +53,9 @@ export class ArticlesComponent implements OnInit {
       case "all":{
         this._blog.getMany().then((res)=>{
           this.data=res['hydra:member']
+          if(this.data.length==0)this.message="Section Vide"
         }).catch((err)=>{
+          this.message="Erreur de Chargmenent"
         }).finally(()=>{
           this.load_data=false
         })
@@ -58,7 +64,9 @@ export class ArticlesComponent implements OnInit {
       case "recent":{
         this._blog.getMany().then((res)=>{
           this.data=res['hydra:member']
+          if(this.data.length==0)this.message="Section Vide"
         }).catch((err)=>{
+          this.message="Erreur de Chargmenent"
         }).finally(()=>{
           this.load_data=false
         })
@@ -67,7 +75,9 @@ export class ArticlesComponent implements OnInit {
       case "my-blogs":{
         this._blog.getMany().then((res)=>{
           this.data=res['hydra:member']
+          if(this.data.length==0)this.message="Section Vide"
         }).catch((err)=>{
+          this.message="Erreur de Chargmenent"
         }).finally(()=>{
           this.load_data=false
         })
@@ -78,6 +88,10 @@ export class ArticlesComponent implements OnInit {
 
   public open=()=>{
     this.materialboxed=M.Materialbox.init(document.querySelectorAll('.materialboxed'));
+  }
+
+  public navigate(id){
+    location.assign("/home/article?id="+id)
   }
 
   /*---------------------------------------------------------------------*/

@@ -21,10 +21,17 @@
     </div>
 </div>
 
+<div class="card" *ngIf="loading">
+    <div class="card-content" align="center">
+        <app-loading></app-loading>
+    </div>
+</div>
+
+
 <div class="divider"></div>
 <br>
 
-<div class="comment">
+<div class="comment" *ngIf="!loading">
     <div class="row">
         <form class="col s12">
           <div class="row">
