@@ -17,11 +17,18 @@ div.card{
             height: 100%;
         }
     }
+
+    small.date{
+        color: $color;
+        font-style: italic;
+    }
     .avatar{
         border: none;
         margin-top: 0px;
         background-color: $background_color;
         color: $link_color;
+        display: flex;
+        align-items: center;
         .secondary-content{
             font-style: italic;
             color: $color;
@@ -29,6 +36,13 @@ div.card{
         p{
             color: $color;
             font-style:italic;
+        }
+        div.circle{
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;   
         }
     }
 }

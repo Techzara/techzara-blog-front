@@ -19,7 +19,7 @@
 
 <div class="row element" id="all">
 
-  <div *ngIf="data.length==0" class="col s12" align="center">
+  <div *ngIf="false" class="col s12" align="center">
     <div class="card loading-card">
       <div *ngIf="!load_data">
         <h5>message</h5>
@@ -42,8 +42,8 @@
     </div>
   </div>
 
-  <div *ngIf="data.length>0">
-    <div class="col s12" *ngFor="let item of data">
+  <div *ngIf="true">
+    <div class="col s12">
       <div class="card">
   
         <div class="card-image">
@@ -51,28 +51,33 @@
           <!--<img *ngIf="item.url" class="materialboxed img" src="{{item.url}}" height="" (load)='open()'>-->
         
         </div>
-  
-        <div class="card-content">
-          <span class="card-title"><strong>{{item.title}}</strong></span>
-          <p>{{item.description}}</p>
-        </div>
-  
-        <ul class="collection avatar">
-          <li class="collection-item avatar">
-            <i class="fa fa-user circle blue darken-2"></i>
-            <span class="title"></span>
-            <p></p>
-            <a class="secondary-content"></a>
-          </li>
-        </ul>
 
+        <div class="card-content">
+
+          <div class="avatar">
+            <div class="circle blue col">
+              <i class="fa fa-user white-text fa-2x"></i>
+            </div>
+            <div class="col">
+              <strong>pseudo</strong>
+            </div>
+          </div>
+          <br>
+          <div class="divider"></div>
+          <br>
+          <span class="card-title"><strong>Titre</strong></span>
+          <p>
+            description
+          </p>
+          <small class="date">date</small>
+        </div>
         <div class="card-action">
           <a href="" class="blue-text">
-            <i class="comment fa fa-comment"></i> Commentaires {{item.comments.length}}
+            <i class="comment fa fa-comment"></i> Commentaires 0
           </a>
 
           <a class="blue-text">
-            <i class="heart fa fa-heart"></i> Reactions {{item.reactions.length}}
+            <i class="heart fa fa-heart"></i> Reactions 0
           </a>
         </div>
   
@@ -84,7 +89,7 @@
 
 <div class="row element" id="recent">
 
-  <div *ngIf="data.length==0" class="col s12" align="center">
+  <div *ngIf="false" class="col s12" align="center">
     <div class="card loading-card">
       <div *ngIf="!load_data">
         <h5>message</h5>
@@ -107,32 +112,38 @@
     </div>
   </div>
 
-  <div *ngIf="data.length>0">
-    <div class="col s12" *ngFor="let item of data; let index=i">
+  <div *ngIf="true">
+    <div class="col s12">
       <div class="card">
   
         <div class="card-image">
           <!----------------------------------------------------------->
-          <img *ngIf="item.url" class="materialboxed img" src="{{item.url}}" height="" (load)='open()'>
+          <!--<img *ngIf="item.url" class="materialboxed img" src="{{item.url}}" height="" (load)='open()'>-->
+        
         </div>
-  
-        <div class="card-content">
-          <span class="card-title"><strong>{{item.title}}</strong></span>
-          <p>{{item.description}}</p>
-        </div>
-  
-        <ul class="collection avatar">
-          <li class="collection-item avatar">
-            <i class="fa fa-user circle blue darken-2"></i>
-            <span class="title">{{item.pseudo}}</span>
-            <p>{{item.email}}</p>
-            <a class="secondary-content">{{item.date}}</a>
-          </li>
-        </ul>
 
+        <div class="card-content">
+
+          <div class="avatar">
+            <div class="circle blue col">
+              <i class="fa fa-user white-text fa-2x"></i>
+            </div>
+            <div class="col">
+              <strong>pseudo</strong>
+            </div>
+          </div>
+          <br>
+          <div class="divider"></div>
+          <br>
+          <span class="card-title"><strong>Titre</strong></span>
+          <p>
+            description
+          </p>
+          <small class="date">date</small>
+        </div>
         <div class="card-action">
           <a href="" class="blue-text">
-            <i class="comment fa fa-comment"></i> Commentaires 0 
+            <i class="comment fa fa-comment"></i> Commentaires 0
           </a>
 
           <a class="blue-text">
@@ -148,7 +159,7 @@
 
 <div class="row element" id="my-blogs">
 
-  <div *ngIf="data.length==0" class="col s12" align="center">
+  <div *ngIf="false" class="col s12" align="center">
     <div class="card loading-card">
       <div *ngIf="!load_data">
         <h5>message</h5>
@@ -171,32 +182,38 @@
     </div>
   </div>
 
-  <div *ngIf="data.length>0">
-    <div class="col s12" *ngFor="let item of data">
+  <div *ngIf="true">
+    <div class="col s12">
       <div class="card">
   
         <div class="card-image">
           <!----------------------------------------------------------->
-          <img *ngIf="item.url" class="materialboxed img" src="{{item.url}}" height="" (load)='open()'>
+          <!--<img *ngIf="item.url" class="materialboxed img" src="{{item.url}}" height="" (load)='open()'>-->
+        
         </div>
-  
-        <div class="card-content">
-          <span class="card-title"><strong>{{item.title}}</strong></span>
-          <p>{{item.description}}</p>
-        </div>
-  
-        <ul class="collection avatar">
-          <li class="collection-item avatar">
-            <i class="fa fa-user circle blue darken-2"></i>
-            <span class="title">{{item.pseudo}}</span>
-            <p>{{item.email}}</p>
-            <a class="secondary-content">{{item.date}}</a>
-          </li>
-        </ul>
 
+        <div class="card-content">
+
+          <div class="avatar">
+            <div class="circle blue col">
+              <i class="fa fa-user white-text fa-2x"></i>
+            </div>
+            <div class="col">
+              <strong>pseudo</strong>
+            </div>
+          </div>
+          <br>
+          <div class="divider"></div>
+          <br>
+          <span class="card-title"><strong>Titre</strong></span>
+          <p>
+            description
+          </p>
+          <small class="date">date</small>
+        </div>
         <div class="card-action">
           <a href="" class="blue-text">
-            <i class="comment fa fa-comment"></i> Commentaires 0 
+            <i class="comment fa fa-comment"></i> Commentaires 0
           </a>
 
           <a class="blue-text">
