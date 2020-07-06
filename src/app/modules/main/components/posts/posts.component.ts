@@ -1,12 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import * as $ from "jquery/dist/jquery.min.js";
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import {JwtHelperService} from "@auth0/angular-jwt";
-import { from } from 'rxjs';
 import { UserService } from 'src/app/services/user/user.service';
 import { BlogService } from 'src/app/services/blog/blog.service';
 import { MediaobjectService } from 'src/app/services/mediaobject/mediaobject.service';
-import { USERNAME_KEY, TOKEN_KEY } from 'src/app/utils/links';
+import { USERNAME_KEY, expired, IRI_USER_KEY, UUID_KEY } from 'src/app/utils/links';
 
 @Component({
   selector: 'app-posts',
@@ -71,7 +69,7 @@ export class PostsComponent implements OnInit {
       })
     })
     .catch((err)=>{
-
+      expired(err)
     })
     .finally(()=>{
       this.data_load=false;
@@ -112,11 +110,12 @@ export class PostsComponent implements OnInit {
         description:description,
         images:images,
         tags:[],
-        user:localStorage.getItem(USERNAME_KEY)
+        user:localStorage.getItem(IRI_USER_KEY)
       }).then((res:any)=>{
         // doStuff()
         location.reload()
       }).catch((err)=>{
+        expired(err)
         input_files=undefined
         this.form_post.setValue({
           title:'',
@@ -128,6 +127,7 @@ export class PostsComponent implements OnInit {
       }).finally(()=>{this.loading=false})
     }).catch((err)=>{
       this.loading=false;
+      expired(err)
     })
   }
 
@@ -157,7 +157,7 @@ export class PostsComponent implements OnInit {
       localStorage.setItem(USERNAME_KEY,username)
       this.user_hide();
     }).catch((err)=>{
-      
+      expired(err)
     })
   }
 

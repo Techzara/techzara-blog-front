@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { UserService } from 'src/app/services/user/user.service';
 import { JwtHelperService } from '@auth0/angular-jwt';
-import { TOKEN_KEY, USERNAME_KEY } from 'src/app/utils/links';
+import { TOKEN_KEY, USERNAME_KEY, UUID_KEY, IRI_USER_KEY } from 'src/app/utils/links';
 
 @Component({
   selector: 'app-login',
@@ -37,7 +37,8 @@ export class LoginComponent implements OnInit {
         localStorage.setItem(TOKEN_KEY,res.token);
         var token=this.helper.decodeToken(localStorage.getItem(TOKEN_KEY));
         localStorage.setItem(USERNAME_KEY,token.username);
-        location.assign("/home");
+        location.assign('/home')
+
       })
       .catch((err)=>{
         if(err.status==0)this.error="Erreur de connexion,vérifier que vous etes connecté à internet."

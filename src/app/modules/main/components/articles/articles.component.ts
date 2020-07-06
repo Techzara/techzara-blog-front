@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import * as M from "materialize-css/dist/js/materialize.min";
 import * as $ from "jquery/dist/jquery.min.js";
 import { BlogService } from 'src/app/services/blog/blog.service';
+import { expired } from 'src/app/utils/links';
 
 @Component({
   selector: 'app-articles',
@@ -32,6 +33,9 @@ export class ArticlesComponent implements OnInit {
       console.log(this.data)
     }).catch((err)=>{
       this.message="Erreur de Chargmenent"
+      console.log(err)
+      expired(err)
+      
     }).finally(()=>{
       this.load_data=false
     })
@@ -56,17 +60,7 @@ export class ArticlesComponent implements OnInit {
           if(this.data.length==0)this.message="Section Vide"
         }).catch((err)=>{
           this.message="Erreur de Chargmenent"
-        }).finally(()=>{
-          this.load_data=false
-        })
-        break;
-      }
-      case "recent":{
-        this._blog.getMany().then((res)=>{
-          this.data=res['hydra:member']
-          if(this.data.length==0)this.message="Section Vide"
-        }).catch((err)=>{
-          this.message="Erreur de Chargmenent"
+          expired(err)
         }).finally(()=>{
           this.load_data=false
         })
@@ -78,6 +72,7 @@ export class ArticlesComponent implements OnInit {
           if(this.data.length==0)this.message="Section Vide"
         }).catch((err)=>{
           this.message="Erreur de Chargmenent"
+          expired(err)
         }).finally(()=>{
           this.load_data=false
         })

@@ -7,6 +7,8 @@ class KeyValue{
 
 export const USERNAME_KEY="TECHZARA_USERNAME";
 export const TOKEN_KEY="SESSION_TOKEN";
+export const IRI_USER_KEY="IRI_USER";
+export const UUID_KEY="UUID_USER";
 
 const GLOBAL="https://techzara.org/api/"
 export const BLOG_LINK=GLOBAL+"blogs";
@@ -19,6 +21,20 @@ export const HEADERS={
     'Content-Type':'application/json',
     'Authorization':'Bearer '+localStorage.getItem(TOKEN_KEY)
 };
+
+export const logout= ()=>{
+    localStorage.removeItem(USERNAME_KEY)
+    localStorage.removeItem(TOKEN_KEY)
+    localStorage.removeItem(IRI_USER_KEY)
+    localStorage.removeItem(UUID_KEY)
+    location.assign("/")
+}
+
+export const expired=(err)=>{
+    if(err.error.code==401){
+        logout()
+    }
+}
 
 /**
  * @param array: Array<KeyValue>

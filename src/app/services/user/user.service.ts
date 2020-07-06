@@ -77,6 +77,11 @@ export class UserService implements CanActivate {
     .toPromise();
   }
 
+  public getBlogs(id:string):Promise<Object>{
+    return this.http.get(USER_LINK+"/"+id+"/blogs",{headers:HEADERS})
+    .toPromise();
+  }
+
   /**
    * @param name:string
    * Retourne un utilisateur à partir de son username
