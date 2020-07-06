@@ -10,11 +10,12 @@ export class MediaobjectService {
   constructor(private http:HttpClient) { }
   
   public create(file:File):Promise<Object>{
-    var data=new FormData();
-    data.append("file",file);
-    return this.http.post(MEDIA_LINK,data,{headers:HEADERS})
+    var formdata:FormData=new FormData();
+    formdata.append("file",file);
+    return this.http.post(MEDIA_LINK,formdata,{headers:{
+      'Authorization':'Bearer '+localStorage.getItem('SESSION_TOKEN')
+    }})
     .toPromise();
-
   }
 
   public getMany(page:number):Promise<Object>{

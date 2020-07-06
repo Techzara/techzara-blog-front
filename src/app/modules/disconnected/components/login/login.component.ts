@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { UserService } from 'src/app/services/user/user.service';
+import { JwtHelperService } from '@auth0/angular-jwt';
+import { TOKEN_KEY, USERNAME_KEY } from 'src/app/utils/links';
 
 @Component({
   selector: 'app-login',
@@ -17,6 +19,7 @@ export class LoginComponent implements OnInit {
   public loading=false;
 
   public error:string;
+  private helper=new JwtHelperService();
 
   constructor(private _user:UserService) { }
 
@@ -31,7 +34,9 @@ export class LoginComponent implements OnInit {
       this._user.connect(login,password)
       .then((res:any)=>{
         this.clear();
-        localStorage.setItem('SESSION_TOKEN',res.token);
+        localStorage.setItem(TOKEN_KEY,res.token);
+        var token=this.helper.decodeToken(localStorage.getItem(TOKEN_KEY));
+        localStorage.setItem(USERNAME_KEY,token.username);
         location.assign("/home");
       })
       .catch((err)=>{

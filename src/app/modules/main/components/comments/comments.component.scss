@@ -1,5 +1,31 @@
 @import "../articles/articles.component.scss";
+div.row.comment{
+    div.card{
+        border-radius: 10px;
+        min-width: 50px;
+        div.card-content{
+            padding: 15px;
+            small{
+                font-style: italic;
+                color: $color;
+            }
+        }
+    }
+    div.circle{
+        width: 60px;
+        height: 60px;
+        display: flex;
+        justify-content: center;
+        align-content: center;
+        align-items: center;
+        margin-top: 5px;
+    }
+}
 
-div.card{
-    color:$text_color;
+.btn{
+    border-radius: 5px;
+}
+
+textarea#comment-area{
+    color: $text_color;
 }

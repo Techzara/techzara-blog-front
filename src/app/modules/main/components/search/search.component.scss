@@ -1,0 +1,10 @@
+@import "../home/home.component.scss";
+@import "../blog/blog.component.scss";
+div.container{
+    margin-bottom: 8em;
+}
+
+h5.title{
+    font-style: italic;
+    color: $color;
+}

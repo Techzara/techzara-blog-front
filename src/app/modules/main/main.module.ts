@@ -12,6 +12,8 @@ import { LoaderComponent } from 'src/app/utils/loader/loader.component';
 import { CommentsComponent } from './components/comments/comments.component';
 import { ArticleComponent } from './components/article/article.component';
 import { BlogComponent } from './components/blog/blog.component';
+import { SearchComponent } from './components/search/search.component';
+import { LoadingComponent } from './components/loading/loading.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +25,9 @@ import { BlogComponent } from './components/blog/blog.component';
     LoaderComponent,
     CommentsComponent,
     ArticleComponent,
-    BlogComponent
+    BlogComponent,
+    SearchComponent,
+    LoadingComponent
   ],
   imports: [
     CommonModule,

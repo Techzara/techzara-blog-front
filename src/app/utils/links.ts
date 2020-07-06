@@ -1,9 +1,14 @@
+import { utils } from 'protractor';
+
 class KeyValue{
     public key:string;
     public value:string;
 }
 
-const GLOBAL="https://blog.techzara.org/api/"
+export const USERNAME_KEY="TECHZARA_USERNAME";
+export const TOKEN_KEY="SESSION_TOKEN";
+
+const GLOBAL="https://techzara.org/api/"
 export const BLOG_LINK=GLOBAL+"blogs";
 export const COMMENT_LINK=GLOBAL+"comments"
 export const REACTION_LINK=GLOBAL+"reactions"
@@ -12,8 +17,9 @@ export const USER_LINK=GLOBAL+"users";
 export const MEDIA_LINK=GLOBAL+"media_objects";
 export const HEADERS={
     'Content-Type':'application/json',
-    'Authorization':'Bearer '+localStorage.getItem('SESSION_TOKEN')
+    'Authorization':'Bearer '+localStorage.getItem(TOKEN_KEY)
 };
+
 /**
  * @param array: Array<KeyValue>
  * Génère un parametre d'url du type ?key=value&key=value...

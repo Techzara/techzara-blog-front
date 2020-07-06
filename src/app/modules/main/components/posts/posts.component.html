@@ -2,19 +2,16 @@
 
     <div id="decoration">
         <div class="col l6 s12 right">
-            <img class="activator" src="../../../../../assets/img3.jpg" width="100%" height="100%">
+            <img class="activator" src="../../../../../assets/img.jpg" width="100%" height="100%">
         </div>
         <div class="col l6 s12">
             <h4>Notre Communauté</h4>
             <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
-                sed do eiusmod tempor incididunt ut labore et dolore magna 
-                aliqua. Ut enim ad minim veniam, quis nostrud exercitation 
-                ullamco laboris nisi ut aliquip ex ea commodo consequat. 
-                Duis aute irure dolor in reprehenderit in voluptate velit 
-                esse cillum dolore eu fugiat nulla pariatur. Excepteur sint 
-                occaecat cupidatat non proident, sunt in culpa qui officia deserunt 
-                mollit anim id est laborum.
+                Première version du blog Techzara 2020. Deployé le 06/07/2020 en accès anticipé.
+                Le site réunis les membre de Techzara Group et vous pouvez trouver ici les articles
+                interviews et autres publications sur le groupe facebook.
+                Le Blog (frontend et backend) sont disponible en Open Source sur Github.
+                Merci de votre soutien et collaboration.
             </p>
             <div class="controls">
                 <a href="/home#top" class="btn blue darken-2 waves-effect waves-light" (click)='show()'>
@@ -31,26 +28,34 @@
     </div>
 
     <div class="row z-depth-1" id="post">
-        <form class="col s12" [formGroup]="form_post">
+        <div align="center" *ngIf="loading">
+            <h5 class="center align">Envoi du poste en cours</h5>
+            <app-loading></app-loading>
+        </div>
+
+        <form *ngIf="!loading" class="col s12" [formGroup]="form_post">
             <h4>Publier un Article</h4>
+            <span class="red-text">{{post_error}}</span>
+            <br>
             <div class="divider"></div>
             <br>
+            
             <div class="row">
                 <div class="input-field col s6">
-                <input id="title" type="text" formControlName="title" data-length="10">
+                <input (click)='clear_error()' id="title" type="text" formControlName="title" data-length="10">
                 <label for="title">Titre du Blog</label>
                 </div>
             </div>
             <div class="row">
                 <div class="input-field col s12">
-                <textarea id="description" formControlName="description" class="materialize-textarea" data-length="120"></textarea>
+                <textarea (click)='clear_error()' id="description" formControlName="description" class="materialize-textarea" data-length="120"></textarea>
                 <label for="description">Description</label>
                 </div>
             </div>
             <div class="row">
                 <div class="col">
                     <div class="file-field input-field">
-                        <div class="btn blue darken-2 waves-effect waves-light">
+                        <div (click)='clear_error()' class="btn blue darken-2 waves-effect waves-light">
                             <span><i class="fa fa-image"></i></span>
                             <input type="file" id="files" multiple formControlName="files">
                         </div>

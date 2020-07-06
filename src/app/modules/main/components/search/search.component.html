@@ -1,0 +1,42 @@
+<app-navbar></app-navbar>
+
+<div class="container">
+    <h5 class="title">Resultat des recherches</h5>
+    <div class="divider"></div>
+    <br>
+    <div class="card" *ngIf="loading">
+        <div class="card-content" align="center">
+            <h5>Chargement des Données</h5>
+            <app-loading></app-loading>
+        </div>
+    </div>
+    <div class="card" *ngIf="!loading">
+        <div class="card-content">
+            <div class="avatar row">
+                <div class="circle blue col">
+                  <i class="fa fa-user white-text fa-2x"></i>
+                </div>
+                <div class="col">
+                  <strong>pseudo</strong>
+                </div>
+            </div>
+            <div class="divider"></div>
+            <br>
+            <div class="card-title">titre</div>
+            <p>
+                extrait
+            </p>
+            <small>
+                date
+            </small>
+
+            <div class="right">
+                <a href="/" class="btn blue waves-effect waves-light">
+                    Voir <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+<br><br>
+<app-footer></app-footer>

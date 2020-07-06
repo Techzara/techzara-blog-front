@@ -10,72 +10,16 @@ import { BlogService } from 'src/app/services/blog/blog.service';
 })
 export class ArticlesComponent implements OnInit {
 
-  public load_data=false;
-
-  public all=[
-        {
-          title:"Mon titre 1",
-          description:"Ma description",
-          pseudo:"Test1234",
-          email:"example@test.com",
-          date:"12/25/2020"
-        },
-        {
-          title:"Mon titre 2",
-          description:"Ma description",
-          pseudo:"Test1234",
-          email:"example@test.com",
-          date:"12/25/2020"
-        },
-        {
-          title:"Mon titre 3",
-          description:"Ma description",
-          pseudo:"Test1234",
-          email:"example@test.com",
-          date:"12/25/2020"
-        },
-        {
-          title:"Mon titre 3",
-          description:"Ma description",
-          pseudo:"Test1234",
-          email:"example@test.com",
-          date:"12/25/2020",
-          url:"../../../../../assets/img4.jpg"
-        }
-]
-
-  public recent=[
-    {
-      title:"Mon titre 1",
-      description:"Ma description",
-      pseudo:"Test1234",
-      email:"example@test.com",
-      date:"12/25/2020"
-    },
-    {
-      title:"Mon titre 3",
-      description:"Ma description",
-      pseudo:"Test1234",
-      email:"example@test.com",
-      date:"12/25/2020"
-    }
-  ]
-
-  public my_blog=[
-    {
-      title:"Mon titre 1",
-      description:"Ma description",
-      pseudo:"Test1234",
-      email:"example@test.com",
-      date:"12/25/2020"
-    }
-  ]
-
-  public data:Array<Object>=this.all;
-
+  public load_data=true;
+  public data:Array<Object>=[];
   public materialboxed;
+  public message="Erreur de Chargemet";
+
+  /*---------------------------------------------------------------------*/
 
   constructor(private _blog:BlogService) {}
+
+  /*---------------------------------------------------------------------*/
 
   ngOnInit(): void {
     var tabs=M.Tabs.init(document.querySelector(".tabs"),{
@@ -83,9 +27,13 @@ export class ArticlesComponent implements OnInit {
     })
 
     this._blog.getMany().then((res)=>{
-      console.log(res)
+      this.data=res['hydra:member']
+      if(this.data.length==0)this.message="Section Vide"
+      console.log(this.data)
     }).catch((err)=>{
-      console.log(err)
+      this.message="Erreur de Chargmenent"
+    }).finally(()=>{
+      this.load_data=false
     })
     
     $("li.indicator").css({'background-color':'#1976d2'});
@@ -95,30 +43,44 @@ export class ArticlesComponent implements OnInit {
     tabs.select('my-blogs');
   }
 
+  /*---------------------------------------------------------------------*/
+
   public tabs_load=(obj)=>{
     this.load_data=true;
     this.data=new Array();
     var id=obj.id;
     switch(id){
       case "all":{
-        setTimeout(()=>{
-          this.load_data=false;
-          this.data=this.all;
-        },3000)
+        this._blog.getMany().then((res)=>{
+          this.data=res['hydra:member']
+          if(this.data.length==0)this.message="Section Vide"
+        }).catch((err)=>{
+          this.message="Erreur de Chargmenent"
+        }).finally(()=>{
+          this.load_data=false
+        })
         break;
       }
       case "recent":{
-        setTimeout(()=>{
-          this.load_data=false;
-          this.data=this.recent;
-        },3000)
+        this._blog.getMany().then((res)=>{
+          this.data=res['hydra:member']
+          if(this.data.length==0)this.message="Section Vide"
+        }).catch((err)=>{
+          this.message="Erreur de Chargmenent"
+        }).finally(()=>{
+          this.load_data=false
+        })
         break;
       }
       case "my-blogs":{
-        setTimeout(()=>{
-          this.load_data=false;
-          this.data=this.my_blog;
-        },3000)
+        this._blog.getMany().then((res)=>{
+          this.data=res['hydra:member']
+          if(this.data.length==0)this.message="Section Vide"
+        }).catch((err)=>{
+          this.message="Erreur de Chargmenent"
+        }).finally(()=>{
+          this.load_data=false
+        })
         break;
       }
     }
@@ -127,5 +89,11 @@ export class ArticlesComponent implements OnInit {
   public open=()=>{
     this.materialboxed=M.Materialbox.init(document.querySelectorAll('.materialboxed'));
   }
+
+  public navigate(id){
+    location.assign("/home/article?id="+id)
+  }
+
+  /*---------------------------------------------------------------------*/
 
 }
